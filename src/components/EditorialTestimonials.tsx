@@ -9,20 +9,20 @@ export function EditorialTestimonials() {
   const marqueeItems = [...TESTIMONIALS, ...TESTIMONIALS];
 
   return (
-    <section id="reviews" className="py-24 md:py-36 w-full border-t border-[var(--border-subtle)] overflow-hidden">
+    <section id="reviews" className="py-16 sm:py-24 md:py-36 w-full border-t border-[var(--border-subtle)] overflow-hidden">
       {/* Editorial Header */}
-      <div className="max-w-7xl mx-auto px-6 md:px-12 mb-12 md:mb-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 mb-10 sm:mb-12 md:mb-16">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[var(--border-subtle)] pb-8">
           <div>
-            <span className="text-[11px] font-mono tracking-[0.25em] uppercase text-[var(--text-muted)] block mb-2">
+            <span className="text-[10px] sm:text-[11px] font-mono tracking-[0.25em] uppercase text-[var(--text-muted)] block mb-2">
               CLIENT EXPERIENCES & REVIEWS
             </span>
-            <h2 className="font-serif-luxury text-4xl sm:text-5xl lg:text-6xl uppercase font-light text-[var(--text-primary)] tracking-tight">
+            <h2 className="font-serif-luxury text-3xl sm:text-5xl lg:text-6xl uppercase font-light text-[var(--text-primary)] tracking-tight">
               COMMISSIONS & REPUTATION
             </h2>
           </div>
 
-          <div className="flex flex-col sm:flex-row sm:items-center gap-4 text-xs font-mono">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 text-xs font-mono">
             <div className="flex items-center space-x-1.5 text-amber-400">
               <span>★★★★★</span>
               <span className="text-[var(--text-primary)] font-medium ml-1">4.9 / 5.0</span>
@@ -38,25 +38,25 @@ export function EditorialTestimonials() {
       {/* Marquee Carousel with Gradient Overlay Edges */}
       <div className="relative w-full overflow-hidden select-none">
         {/* Left Gradient Fade Overlay */}
-        <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-24 sm:w-44 z-20 bg-gradient-to-r from-[var(--bg-primary)] via-[var(--bg-primary)]/80 to-transparent" />
+        <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-8 sm:w-20 md:w-36 z-20 bg-gradient-to-r from-[var(--bg-primary)] via-[var(--bg-primary)]/80 to-transparent" />
 
         {/* Right Gradient Fade Overlay */}
-        <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-24 sm:w-44 z-20 bg-gradient-to-l from-[var(--bg-primary)] via-[var(--bg-primary)]/80 to-transparent" />
+        <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-8 sm:w-20 md:w-36 z-20 bg-gradient-to-l from-[var(--bg-primary)] via-[var(--bg-primary)]/80 to-transparent" />
 
         {/* Infinite Scrolling Track */}
-        <div className="marquee-track flex gap-6 sm:gap-8 px-6 py-4">
+        <div className="marquee-track flex gap-4 sm:gap-6 md:gap-8 px-4 sm:px-6 py-4">
           {marqueeItems.map((item, idx) => (
             <div
               key={`${item.name}-${idx}`}
-              className="w-[320px] sm:w-[380px] md:w-[420px] flex-shrink-0 p-6 sm:p-8 rounded-sm border border-[var(--border-subtle)] bg-[var(--bg-secondary)] hover:border-[var(--text-primary)] transition-all duration-300 flex flex-col justify-between group cursor-grab active:cursor-grabbing"
+              className="w-[300px] sm:w-[380px] md:w-[420px] flex-shrink-0 p-6 sm:p-7 md:p-8 rounded-sm border border-[var(--border-subtle)] bg-[var(--bg-secondary)] hover:border-[var(--text-primary)] transition-all duration-300 flex flex-col justify-between group cursor-grab active:cursor-grabbing"
             >
               <div>
                 {/* Stars & Tag */}
-                <div className="flex items-center justify-between mb-5">
-                  <div className="text-amber-400 text-xs tracking-widest">
+                <div className="flex items-center justify-between mb-4 sm:mb-5">
+                  <div className="text-amber-400 text-sm tracking-widest">
                     {"★".repeat(item.rating)}
                   </div>
-                  <span className="text-[9px] font-mono tracking-widest uppercase text-[var(--text-muted)] border border-[var(--border-subtle)] px-2 py-0.5 rounded-xs">
+                  <span className="text-[10px] sm:text-[11px] font-mono tracking-widest uppercase text-stone-300 border border-[var(--border-subtle)] px-2.5 py-1 rounded-xs">
                     {item.type}
                   </span>
                 </div>
@@ -70,15 +70,15 @@ export function EditorialTestimonials() {
               {/* Author Attribution */}
               <div className="pt-4 border-t border-[var(--border-subtle)] flex items-end justify-between">
                 <div>
-                  <h4 className="font-sans font-medium text-sm text-[var(--text-primary)] uppercase tracking-wider">
+                  <h4 className="font-sans font-semibold text-sm sm:text-base text-[var(--text-primary)] uppercase tracking-wider">
                     {item.name}
                   </h4>
-                  <p className="text-[11px] font-mono text-[var(--text-muted)] uppercase tracking-wider mt-0.5">
+                  <p className="text-xs font-mono text-[var(--text-muted)] uppercase tracking-wider mt-0.5">
                     {item.role}
                   </p>
                 </div>
 
-                <span className="text-[10px] font-mono text-[var(--text-muted)] uppercase">
+                <span className="text-xs font-mono text-[var(--text-muted)] uppercase">
                   {item.location}
                 </span>
               </div>
@@ -88,8 +88,8 @@ export function EditorialTestimonials() {
       </div>
 
       {/* Bottom Sub-bar */}
-      <div className="max-w-7xl mx-auto px-6 md:px-12 mt-10">
-        <div className="pt-6 border-t border-[var(--border-subtle)] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 mt-8 sm:mt-10">
+        <div className="pt-6 border-t border-[var(--border-subtle)] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs font-mono">
           <span className="text-[var(--text-muted)] uppercase tracking-wider flex items-center gap-2">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block animate-pulse" />
             HOVER OVER ANY CARD TO PAUSE SCROLL

@@ -7,9 +7,9 @@ import { SHOWROOM_INFO } from "@/data/editorial";
 
 export function EditorialFooter() {
   return (
-    <footer id="contact" className="pt-20 md:pt-28 pb-14 px-6 md:px-12 max-w-7xl mx-auto w-full border-t border-[var(--border-subtle)] text-[var(--text-primary)]">
+    <footer id="contact" className="pt-16 sm:pt-20 md:pt-28 pb-12 sm:pb-14 px-4 sm:px-6 md:px-12 max-w-7xl mx-auto w-full border-t border-[var(--border-subtle)] text-[var(--text-primary)]">
       {/* Top Section: Brand + Contact & Enquiries Info */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 pb-14 border-b border-[var(--border-subtle)]">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-12 lg:gap-16 pb-12 sm:pb-14 border-b border-[var(--border-subtle)]">
         {/* Brand identity with Logo (NO BOX) */}
         <div className="lg:col-span-5 flex flex-col justify-between">
           <div>
@@ -71,29 +71,29 @@ export function EditorialFooter() {
         {/* Enquiries & Business Numbers */}
         <div className="lg:col-span-4 flex flex-col justify-between">
           <div>
-            <span className="text-[10px] font-mono tracking-[0.25em] uppercase text-[var(--text-muted)] block mb-3">
+            <span className="text-xs font-mono tracking-[0.25em] uppercase text-stone-300 font-medium block mb-3">
               DIRECT ENQUIRIES & CONTACT
             </span>
 
             {/* Email link */}
-            <div className="mb-4">
+            <div className="mb-5">
               <span className="block text-xs font-mono text-[var(--text-muted)] uppercase mb-1">
                 OFFICIAL EMAIL:
               </span>
               <a
                 href={`mailto:${SHOWROOM_INFO.email}`}
-                className="font-mono text-sm sm:text-base text-[var(--text-primary)] hover:underline decoration-1 underline-offset-4"
+                className="font-mono text-base sm:text-lg text-[var(--text-primary)] font-medium hover:underline decoration-1 underline-offset-4 break-all sm:break-normal"
               >
                 {SHOWROOM_INFO.email}
               </a>
             </div>
 
             {/* Business Phone Numbers */}
-            <div className="mb-4">
+            <div className="mb-5">
               <span className="block text-xs font-mono text-[var(--text-muted)] uppercase mb-1">
                 SHOWROOM DIRECT DESK:
               </span>
-              <div className="space-y-1 font-mono text-sm text-[var(--text-primary)]">
+              <div className="space-y-1 font-mono text-base text-[var(--text-primary)] font-medium">
                 <div>
                   <a href={`tel:${SHOWROOM_INFO.phone1}`} className="hover:underline">
                     {SHOWROOM_INFO.phone1}
@@ -112,7 +112,7 @@ export function EditorialFooter() {
               <span className="block text-xs font-mono text-[var(--text-muted)] uppercase mb-1">
                 YARD ADDRESS:
               </span>
-              <p className="text-xs text-[var(--text-secondary)] leading-relaxed font-light">
+              <p className="text-sm text-[var(--text-secondary)] leading-relaxed font-light">
                 {SHOWROOM_INFO.address.join(", ")}
               </p>
             </div>
@@ -122,11 +122,11 @@ export function EditorialFooter() {
         {/* Quick Links Column */}
         <div className="lg:col-span-3 flex flex-col justify-between">
           <div>
-            <span className="text-[10px] font-mono tracking-[0.25em] uppercase text-[var(--text-muted)] block mb-3">
+            <span className="text-xs font-mono tracking-[0.25em] uppercase text-stone-300 font-medium block mb-3">
               ARCHITECTURAL DIRECTORY
             </span>
 
-            <nav className="flex flex-col space-y-2.5 text-xs font-mono tracking-[0.18em] uppercase text-[var(--text-secondary)]">
+            <nav className="flex flex-col space-y-3 text-sm font-mono tracking-[0.16em] uppercase text-[var(--text-secondary)]">
               <a href="#materials" className="hover:text-[var(--text-primary)] transition-colors">
                 → MATERIALS ARCHIVE
               </a>
@@ -145,7 +145,7 @@ export function EditorialFooter() {
                 )}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-[var(--text-primary)] transition-colors"
+                className="hover:text-[var(--text-primary)] transition-colors font-medium text-emerald-400"
               >
                 → WHATSAPP DESK
               </a>
@@ -155,8 +155,8 @@ export function EditorialFooter() {
       </div>
 
       {/* Embedded Store Location on Google Maps */}
-      <div className="pt-10 pb-8">
-        <div className="flex items-center justify-between mb-4">
+      <div className="pt-8 sm:pt-10 pb-6 sm:pb-8">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3 sm:mb-4">
           <span className="text-[10px] font-mono tracking-[0.25em] uppercase text-[var(--text-muted)]">
             STORE LOCATION · KAMTA, LUCKNOW
           </span>
@@ -170,7 +170,7 @@ export function EditorialFooter() {
           </a>
         </div>
 
-        <div className="w-full h-[260px] md:h-[300px] rounded-xs overflow-hidden border border-[var(--border-subtle)] bg-stone-900/10">
+        <div className="w-full h-[210px] sm:h-[260px] md:h-[300px] rounded-xs overflow-hidden border border-[var(--border-subtle)] bg-stone-900/10">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7117.832073218969!2d81.01124119357908!3d26.87440859999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399be3af24ea81c1%3A0x1cd7f1b20353b9e!2sStone%20Gallery!5e0!3m2!1sen!2sin!4v1791368432427!5m2!1sen!2sin"
             width="100%"
@@ -186,7 +186,7 @@ export function EditorialFooter() {
       </div>
 
       {/* Bottom Bar: Copyright & Location Note */}
-      <div className="pt-6 border-t border-[var(--border-subtle)] flex flex-col sm:flex-row items-center justify-between gap-4 text-[10px] font-mono tracking-widest text-[var(--text-muted)] uppercase">
+      <div className="pt-6 border-t border-[var(--border-subtle)] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-[9px] sm:text-[10px] font-mono tracking-widest text-[var(--text-muted)] uppercase">
         <span>© {new Date().getFullYear()} STONE GALLERY LUCKNOW. ALL RIGHTS RESERVED.</span>
         <span>KAMTA YARD · AYODHYA ROAD · OPPOSITE SUDHA PETROL PUMP</span>
       </div>

@@ -8,20 +8,20 @@ export function EditorialShowroom() {
   const [showMap, setShowMap] = useState(false);
 
   return (
-    <section id="showroom" className="py-24 md:py-36 px-6 md:px-12 max-w-7xl mx-auto w-full border-t border-[var(--border-subtle)]">
+    <section id="showroom" className="py-16 sm:py-24 md:py-36 px-4 sm:px-6 md:px-12 max-w-7xl mx-auto w-full border-t border-[var(--border-subtle)]">
       {/* Title */}
-      <div className="mb-14 md:mb-20">
+      <div className="mb-10 sm:mb-14 md:mb-20">
         <span className="text-[10px] font-mono tracking-[0.3em] uppercase text-[var(--text-muted)] block mb-3">
           SHOWROOM YARD · LUCKNOW
         </span>
-        <h2 className="font-serif-luxury text-5xl sm:text-6xl md:text-7xl leading-[0.95] uppercase font-light text-[var(--text-primary)]">
+        <h2 className="font-serif-luxury text-4xl sm:text-6xl md:text-7xl leading-[0.95] uppercase font-light text-[var(--text-primary)]">
           SEE IT <br />
           IN PERSON.
         </h2>
       </div>
 
       {/* Large Showroom Photograph / Map Viewport */}
-      <div className="relative aspect-[16/9] w-full overflow-hidden bg-black/10 select-none group rounded-xs border border-[var(--border-subtle)]">
+      <div className="relative aspect-[4/3] sm:aspect-[16/9] w-full overflow-hidden bg-black/10 select-none group rounded-xs border border-[var(--border-subtle)]">
         {!showMap ? (
           <Image
             src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2400&q=90"
@@ -46,16 +46,16 @@ export function EditorialShowroom() {
 
         <button
           onClick={() => setShowMap(!showMap)}
-          className="absolute top-6 right-6 px-4 py-2 bg-[var(--bg-primary)]/90 backdrop-blur-md text-[var(--text-primary)] text-[10px] font-mono tracking-widest uppercase border border-[var(--border-color)] hover:opacity-80 transition-opacity"
+          className="absolute top-3 right-3 sm:top-6 sm:right-6 px-3 sm:px-4 py-1.5 sm:py-2 bg-[var(--bg-primary)]/90 backdrop-blur-md text-[var(--text-primary)] text-[9px] sm:text-[10px] font-mono tracking-widest uppercase border border-[var(--border-color)] hover:opacity-80 transition-opacity"
         >
           {showMap ? "SHOW PHOTOGRAPH" : "VIEW GOOGLE MAP"}
         </button>
       </div>
 
       {/* Copy & Details Block */}
-      <div className="mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16 items-start">
+      <div className="mt-10 sm:mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-12 gap-8 sm:gap-10 md:gap-16 items-start">
         <div className="md:col-span-7">
-          <p className="font-serif-luxury text-2xl sm:text-3xl text-[var(--text-primary)] font-light leading-snug">
+          <p className="font-serif-luxury text-xl sm:text-2xl md:text-3xl text-[var(--text-primary)] font-light leading-snug">
             &ldquo;Stone changes under real light. Come see the slab before you choose it.&rdquo;
           </p>
 
@@ -71,31 +71,31 @@ export function EditorialShowroom() {
           </div>
         </div>
 
-        <div className="md:col-span-5 space-y-4 text-xs font-mono text-[var(--text-muted)]">
+        <div className="md:col-span-5 space-y-5 text-sm font-mono text-[var(--text-secondary)]">
           <div>
-            <span className="block text-[10px] tracking-widest uppercase text-[var(--text-primary)] mb-1">
+            <span className="block text-xs tracking-widest uppercase text-[var(--text-primary)] font-medium mb-1.5">
               ADDRESS
             </span>
             <p className="leading-relaxed">{SHOWROOM_INFO.address.join(", ")}</p>
           </div>
 
-          <div className="pt-2">
-            <span className="block text-[10px] tracking-widest uppercase text-[var(--text-primary)] mb-1">
+          <div className="pt-1">
+            <span className="block text-xs tracking-widest uppercase text-[var(--text-primary)] font-medium mb-1.5">
               VISITING HOURS
             </span>
             <p>Monday – Sunday: 9:30 AM – 8:00 PM</p>
           </div>
 
-          <div className="pt-2">
-            <span className="block text-[10px] tracking-widest uppercase text-[var(--text-primary)] mb-1">
+          <div className="pt-1">
+            <span className="block text-xs tracking-widest uppercase text-[var(--text-primary)] font-medium mb-1.5">
               TELEPHONE
             </span>
-            <p>
-              <a href={`tel:${SHOWROOM_INFO.phone1}`} className="hover:text-[var(--text-primary)] transition-colors">
+            <p className="text-base text-[var(--text-primary)] font-medium">
+              <a href={`tel:${SHOWROOM_INFO.phone1}`} className="hover:underline">
                 {SHOWROOM_INFO.phone1}
               </a>
               {" / "}
-              <a href={`tel:${SHOWROOM_INFO.phone2}`} className="hover:text-[var(--text-primary)] transition-colors">
+              <a href={`tel:${SHOWROOM_INFO.phone2}`} className="hover:underline">
                 {SHOWROOM_INFO.phone2}
               </a>
             </p>

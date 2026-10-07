@@ -31,9 +31,9 @@ export function SignatureScrollSection() {
   const activeWord = words[wordIndex];
 
   return (
-    <section ref={containerRef} className="relative h-[240vh] w-full bg-black select-none">
+    <section ref={containerRef} className="relative h-[200vh] sm:h-[240vh] w-full bg-black select-none">
       {/* Sticky Fullscreen Viewport */}
-      <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden">
+      <div className="sticky top-0 h-[100dvh] w-full flex items-center justify-center overflow-hidden">
         {/* Layer 1: Raw Slab Image */}
         <div
           className="absolute inset-0 transition-opacity duration-700 ease-out"
@@ -72,22 +72,22 @@ export function SignatureScrollSection() {
         <div className="absolute inset-0 bg-black/40 pointer-events-none" />
 
         {/* Centered Giant Typographic Word Reveal */}
-        <div className="relative z-10 text-center px-6">
-          <span className="text-[10px] font-mono tracking-[0.4em] uppercase text-stone-400 block mb-3">
+        <div className="relative z-10 text-center px-4 sm:px-6">
+          <span className="text-[10px] font-mono tracking-[0.3em] sm:tracking-[0.4em] uppercase text-stone-400 block mb-2 sm:mb-3">
             PROGRESSION · {materialData.name}
           </span>
           <h3
             key={activeWord}
-            className="font-serif-luxury text-[18vw] sm:text-[14vw] md:text-[11vw] leading-none uppercase font-light text-white tracking-tight animate-fadeIn"
+            className="font-serif-luxury text-[13vw] sm:text-[14vw] md:text-[11vw] leading-none uppercase font-light text-white tracking-tight animate-fadeIn"
           >
             {activeWord}
           </h3>
         </div>
 
         {/* Bottom indicator */}
-        <div className="absolute bottom-10 left-6 right-6 max-w-7xl mx-auto flex items-center justify-between text-white/70 text-[10px] font-mono tracking-[0.3em] uppercase">
+        <div className="absolute bottom-6 sm:bottom-10 left-4 sm:left-6 right-4 sm:right-6 max-w-7xl mx-auto flex items-center justify-between text-white/70 text-[9px] sm:text-[10px] font-mono tracking-[0.25em] sm:tracking-[0.3em] uppercase">
           <span>01 / MATERIAL</span>
-          <div className="w-24 h-[1px] bg-white/30 hidden sm:block">
+          <div className="w-20 sm:w-24 h-[1px] bg-white/30 hidden xs:block sm:block">
             <div
               className="h-full bg-white transition-all duration-150"
               style={{ width: `${progress * 100}%` }}
