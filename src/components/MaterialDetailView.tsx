@@ -7,7 +7,8 @@ import { MaterialCategory } from "@/data/materials";
 import { MaterialThemeProvider } from "@/context/MaterialThemeContext";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
-import { ArrowLeft, MessageSquare, Compass, ShieldCheck } from "lucide-react";
+import { ArrowLeft, MessageSquare, Compass, ShieldCheck, Ruler, Sparkles } from "lucide-react";
+import { GOOGLE_MAPS_META } from "@/data/reviews";
 
 export function MaterialDetailView({ material }: { material: MaterialCategory }) {
   return (
@@ -40,7 +41,7 @@ export function MaterialDetailView({ material }: { material: MaterialCategory })
               <span>RETURN TO MAIN SHOWROOM</span>
             </Link>
             <span className="text-[10px] font-mono tracking-widest uppercase text-stone-400">
-              CATEGORY {material.number} / 03
+              CATEGORY {material.number} / 04
             </span>
           </div>
 
@@ -60,10 +61,10 @@ export function MaterialDetailView({ material }: { material: MaterialCategory })
           </div>
 
           {/* Bottom Info Bar */}
-          <div className="relative z-10 pb-8 px-6 md:px-12 max-w-7xl mx-auto w-full flex flex-col sm:flex-row items-start sm:items-center justify-between border-t border-white/20 pt-4 text-xs font-mono text-stone-300">
+          <div className="relative z-10 pb-8 px-6 md:px-12 max-w-7xl mx-auto w-full flex flex-col sm:flex-row items-start sm:items-center justify-between border-t border-white/20 pt-4 text-xs font-mono text-stone-300 gap-2">
             <div>SHOWROOM YARD: KAMTA · AYODHYA ROAD, LUCKNOW</div>
             <div className="text-[10px] uppercase tracking-widest text-stone-400">
-              PHYSICAL SLABS AVAILABLE FOR INSPECTION
+              PHYSICAL UNBROKEN SLABS AVAILABLE FOR INSPECTION
             </div>
           </div>
         </section>
@@ -88,66 +89,66 @@ export function MaterialDetailView({ material }: { material: MaterialCategory })
                   APPLICATION 0{i + 1}
                 </span>
                 <h4 className="font-serif-luxury text-xl text-[var(--text-primary)]">
-                  {app.title}
+                  {app}
                 </h4>
-                <p className="mt-2 text-xs text-[var(--text-secondary)] font-light leading-relaxed">
-                  {app.description}
-                </p>
               </div>
             ))}
           </div>
         </section>
 
-        {/* Popular Varieties & Products in Stock */}
+        {/* Popular Varieties / Slabs in Stock */}
         <section className="py-20 px-6 md:px-12 max-w-7xl mx-auto border-t border-[var(--border-color)]">
           <div className="mb-12">
             <span className="text-[10px] font-mono tracking-widest uppercase text-[var(--accent)] block mb-1">
               CURRENT VARIETIES IN STOCK
             </span>
             <h3 className="font-serif-luxury text-3xl sm:text-5xl uppercase text-[var(--text-primary)]">
-              {material.name} Varieties at Stone Gallery
+              {material.name} Varieties at Stone Gallery Lucknow
             </h3>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {material.products.map((prod) => (
+            {material.slabs.map((slab) => (
               <div
-                key={prod.id}
+                key={slab.id}
                 className="border border-[var(--border-color)] bg-[var(--bg-secondary)] p-6 flex flex-col justify-between shadow-[var(--slab-shadow)]"
               >
-                <div className="relative aspect-[4/3] w-full overflow-hidden bg-black mb-5">
+                <div className="relative aspect-[4/3] w-full overflow-hidden bg-black mb-5 border border-[var(--border-subtle)]">
                   <Image
-                    src={prod.image}
-                    alt={prod.name}
+                    src={slab.image}
+                    alt={slab.name}
                     fill
                     sizes="(max-width: 768px) 100vw, 33vw"
                     className="object-cover hover:scale-105 transition-transform duration-700"
                   />
                   <div className="absolute bottom-2 left-2 bg-black/70 px-2 py-0.5 text-white text-[9px] font-mono uppercase">
-                    {prod.finish}
+                    {slab.finish}
                   </div>
                 </div>
 
                 <div>
+                  <div className="text-[10px] font-mono uppercase tracking-widest text-[var(--text-muted)] mb-1">
+                    {slab.origin}
+                  </div>
                   <h4 className="font-serif-luxury text-2xl text-[var(--text-primary)]">
-                    {prod.name}
+                    {slab.name}
                   </h4>
-                  <p className="text-xs font-mono text-[var(--text-muted)] mt-1 uppercase">
-                    Best for: {prod.bestFor}
+                  <p className="text-xs font-mono text-[var(--accent)] mt-1 uppercase">
+                    Dimensions: {slab.dimensions}
                   </p>
                   <p className="mt-3 text-xs text-[var(--text-secondary)] font-light leading-relaxed">
-                    {prod.description}
+                    {slab.character}
                   </p>
                 </div>
 
                 <div className="mt-6 pt-4 border-t border-[var(--border-subtle)] flex items-center justify-between">
                   <span className="text-[9px] font-mono text-emerald-600 flex items-center space-x-1">
                     <ShieldCheck className="w-3 h-3" />
-                    <span>LUCKNOW SHOWROOM</span>
+                    <span>LUCKNOW SHOWROOM STOCK</span>
                   </span>
                   <a
-                    href={`https://wa.me/919999999999?text=Hi,%20I%20found%20${encodeURIComponent(
-                      prod.name
+                    href={`https://wa.me/917897931966?text=Hi,%20I%20found%20${encodeURIComponent(
+                      slab.name
                     )}%20on%20your%20website%20and%20would%20like%20to%20know%20more%20about%20availability%20and%20pricing.`}
                     target="_blank"
                     rel="noopener noreferrer"
