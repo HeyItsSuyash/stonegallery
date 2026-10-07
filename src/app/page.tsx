@@ -1,69 +1,141 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import React from "react";
+import { MaterialThemeProvider } from "@/context/MaterialThemeContext";
+import { CustomCursor } from "@/components/CustomCursor";
+import { Navigation } from "@/components/Navigation";
+import { Hero } from "@/components/Hero";
+import { BrandStatement } from "@/components/BrandStatement";
+import { HeroTransformation } from "@/components/HeroTransformation";
+import { SlabExperience } from "@/components/SlabExperience";
+import { MacroGallery } from "@/components/MacroGallery";
+import { HorizontalSlabGallery } from "@/components/HorizontalSlabGallery";
+import { ApplicationsStory } from "@/components/ApplicationsStory";
+import { ProjectGallery } from "@/components/ProjectGallery";
+import { ShowroomExperience } from "@/components/ShowroomExperience";
+import { BehindTheMaterial } from "@/components/BehindTheMaterial";
+import { ArchitectsSection } from "@/components/ArchitectsSection";
+import { MaterialConsultation } from "@/components/MaterialConsultation";
+import { Testimonials } from "@/components/Testimonials";
+import { Footer } from "@/components/Footer";
+import { StickyMobileBar } from "@/components/StickyMobileBar";
+
+export default function HomePage() {
+  const schemaData = {
+    "@context": "https://schema.org",
+    "@type": ["LocalBusiness", "HomeGoodsStore"],
+    name: "Stone Gallery",
+    alternateName: "Stone Gallery Lucknow - Architectural Stone & Surface Studio",
+    url: "https://stonegallery.in",
+    logo: "https://stonegallery.in/icon.svg",
+    image: [
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?auto=format&fit=crop&w=1600&q=85",
+    ],
+    description:
+      "A premier architectural stone, Italian marble, exotic granite, travertine and onyx surface studio in Lucknow, Uttar Pradesh. Discover earth's raw beauty shaped for timeless living spaces.",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress:
+        "Dharm Kanta – Ayodhya Road, Opposite Sudha Petrol Pump, Adjoining Gard, Shankar Puri, Kamta",
+      addressLocality: "Lucknow",
+      addressRegion: "Uttar Pradesh",
+      postalCode: "226028",
+      addressCountry: "IN",
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: "26.8667",
+      longitude: "81.0125",
+    },
+    telephone: "+919999999999",
+    openingHours: "Mo,Tu,We,Th,Fr,Sa,Su 10:00-20:00",
+    priceRange: "$$$$",
+    areaServed: [
+      { "@type": "City", name: "Lucknow" },
+      { "@type": "City", name: "Kanpur" },
+      { "@type": "City", name: "Ayodhya" },
+      { "@type": "AdministrativeArea", name: "Uttar Pradesh" },
+    ],
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Architectural Stone & Surface Collections",
+      itemListElement: [
+        { "@type": "Offer", itemOffered: { "@type": "Product", name: "Italian Marble Slabs (Statuario, Calacatta)" } },
+        { "@type": "Offer", itemOffered: { "@type": "Product", name: "Exotic Brazilian Granite (Cosmic Black, Titanium)" } },
+        { "@type": "Offer", itemOffered: { "@type": "Product", name: "Roman Navona Travertine" } },
+        { "@type": "Offer", itemOffered: { "@type": "Product", name: "Translucent Backlit Persian Onyx" } },
+        { "@type": "Offer", itemOffered: { "@type": "Product", name: "Engineered Architectural Quartz" } },
+        { "@type": "Offer", itemOffered: { "@type": "Product", name: "Natural Indian Stone & Sandstone" } },
+      ],
+    },
+  };
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+    <MaterialThemeProvider>
+      {/* Schema.org SEO for Lucknow Local Business */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
+      />
+
+      {/* Tactile Ambient Material Grain */}
+      <div className="fixed inset-0 pointer-events-none z-30 bg-grain opacity-40 mix-blend-overlay" />
+
+      {/* Desktop Custom Precision Cursor */}
+      <CustomCursor />
+
+      {/* Minimal Floating Navigation */}
+      <Navigation />
+
+      {/* Main Experience Flow */}
+      <main className="relative flex flex-col w-full">
+        {/* WOW 01: Full-Screen Cinematic Macro Stone Hero */}
+        <Hero />
+
+        {/* Section 11: Editorial Brand Manifesto */}
+        <BrandStatement />
+
+        {/* WOW 02 & Section 10: Hero Transformation (Macro -> Surface -> Slab -> Space) */}
+        <HeroTransformation />
+
+        {/* WOW 04 & Section 14: Meet The Slab - Interactive Slab Inspector */}
+        <SlabExperience />
+
+        {/* WOW 06 & Section 15: Look Closer - Macro Material Zoom Loupe */}
+        <MacroGallery />
+
+        {/* WOW 05 & Section 19: Walking The Gallery - Horizontal Slab Runway */}
+        <HorizontalSlabGallery />
+
+        {/* WOW 07 & Section 20-21: From Slab to Space - Spatial Applications */}
+        <ApplicationsStory />
+
+        {/* Section 22-23: Stone in Context - Real Lucknow Commissions */}
+        <ProjectGallery />
+
+        {/* Section 24-25: See It In Person - Lucknow Showroom Experience */}
+        <ShowroomExperience />
+
+        {/* Section 26: Behind The Material - Studio Ethos */}
+        <BehindTheMaterial />
+
+        {/* Section 27: For Architects & Interior Designers */}
+        <ArchitectsSection />
+
+        {/* Section 28: Interactive Space Consultation */}
+        <MaterialConsultation />
+
+        {/* Section 30: Testimonials from Lucknow Homeowners & Architects */}
+        <Testimonials />
       </main>
-    </div>
+
+      {/* Section 33-34: Material-Aware Monograph Footer */}
+      <Footer />
+
+      {/* Mobile Sticky Bar for Direct WhatsApp & Navigation */}
+      <StickyMobileBar />
+    </MaterialThemeProvider>
   );
 }
