@@ -2,190 +2,276 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import { DETAILED_STONES, SHOWROOM_INFO } from "@/data/editorial";
 import { useGallery } from "@/context/GalleryContext";
-import { MATERIAL_FAMILIES, SHOWROOM_INFO } from "@/data/editorial";
 
 export function EditorialMaterialSection() {
-  const { activeMaterial, materialData, setActiveMaterial } = useGallery();
-  const [currentStyleIndex, setCurrentStyleIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const { setActiveMaterial } = useGallery();
 
-  const materialsList: Array<"marble" | "granite" | "stone"> = ["granite", "marble", "stone"];
-  const currentVarieties = materialData.varieties;
-  const activeVariety = currentVarieties[currentStyleIndex] || currentVarieties[0];
+  const totalStones = DETAILED_STONES.length;
+  const activeStone = DETAILED_STONES[currentIndex];
 
   const handlePrev = () => {
-    setCurrentStyleIndex((prev) => (prev === 0 ? currentVarieties.length - 1 : prev - 1));
+    const nextIdx = currentIndex === 0 ? totalStones - 1 : currentIndex - 1;
+    setCurrentIndex(nextIdx);
+    setActiveMaterial(DETAILED_STONES[nextIdx].familyId);
   };
 
   const handleNext = () => {
-    setCurrentStyleIndex((prev) => (prev === currentVarieties.length - 1 ? 0 : prev + 1));
+    const nextIdx = currentIndex === totalStones - 1 ? 0 : currentIndex + 1;
+    setCurrentIndex(nextIdx);
+    setActiveMaterial(DETAILED_STONES[nextIdx].familyId);
   };
 
-  const handleSelectMaterial = (matKey: "marble" | "granite" | "stone") => {
-    setActiveMaterial(matKey);
-    setCurrentStyleIndex(0);
+  const handleSelectStone = (idx: number) => {
+    setCurrentIndex(idx);
+    setActiveMaterial(DETAILED_STONES[idx].familyId);
   };
 
   return (
-    <section id="materials" className="py-20 md:py-32 px-6 md:px-12 max-w-7xl mx-auto w-full">
-      {/* Side-by-Side: Find Your Stone (Left) + Stone Styles with Arrow Navigation (Right) */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-        {/* LEFT COLUMN: FIND YOUR STONE & Material Selectors */}
+    <section
+      id="materials"
+      className="relative min-h-[90vh] py-24 md:py-36 px-6 md:px-12 w-full overflow-hidden text-white select-none border-t border-white/10"
+    >
+      {/* SECTION BACKGROUND: Actual Macro Texture of the Selected Stone */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          key={activeStone.id}
+          src={activeStone.textureImage}
+          alt={`${activeStone.name} Texture Background`}
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center filter brightness-[0.24] contrast-125 transition-all duration-1000 ease-out"
+        />
+        {/* Architectural atmospheric gradient overlays for crystal-clear readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/85 to-black/75 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/70 pointer-events-none" />
+      </div>
+
+      {/* Main Content Container: Side-by-Side Split Grid */}
+      <div className="relative z-10 max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+        {/* LEFT COLUMN: Find Your Stone + Rich Architectural Specification Slots */}
         <div className="lg:col-span-5 flex flex-col justify-between space-y-8">
           <div>
-            <span className="text-[11px] font-mono tracking-[0.25em] uppercase text-[var(--text-muted)] block mb-3">
-              SECTION 01 / MATERIAL COLLECTION
-            </span>
-            <h2 className="font-serif-luxury text-5xl sm:text-6xl lg:text-7xl leading-[0.92] uppercase font-light text-[var(--text-primary)] tracking-tight">
+            <div className="flex items-center space-x-3 mb-3">
+              <span className="w-6 h-[1px] bg-[#C5A880]" />
+              <span className="text-[11px] font-mono tracking-[0.28em] uppercase text-stone-300">
+                SECTION 01 / MATERIAL DISCOVERY
+              </span>
+            </div>
+
+            <h2 className="font-serif-luxury text-5xl sm:text-6xl lg:text-7xl leading-[0.92] uppercase font-light text-white tracking-tight">
               FIND <br />
               YOUR <br />
               STONE.
             </h2>
-            <p className="mt-4 text-sm sm:text-base text-[var(--text-secondary)] font-light leading-relaxed max-w-md">
-              &ldquo;{materialData.caption}&rdquo; Select a petrographic family below to inspect
-              authenticated gangsaw lots in our showroom yard.
-            </p>
-          </div>
 
-          {/* Three Material Selectors (Stacked Architectural Buttons) */}
-          <div className="space-y-3">
-            {materialsList.map((matKey, idx) => {
-              const mat = MATERIAL_FAMILIES[matKey];
-              const isSelected = activeMaterial === matKey;
-
-              return (
-                <button
-                  key={matKey}
-                  type="button"
-                  onClick={() => handleSelectMaterial(matKey)}
-                  className={`w-full text-left p-4 rounded-xs border transition-all duration-300 flex items-center justify-between group ${
-                    isSelected
-                      ? "bg-[var(--text-primary)] text-[var(--bg-primary)] border-[var(--text-primary)] shadow-md"
-                      : "bg-[var(--bg-secondary)] text-[var(--text-primary)] border-[var(--border-subtle)] hover:border-[var(--text-secondary)]"
-                  }`}
-                >
-                  <div className="flex items-center space-x-3.5">
-                    <span className="text-[10px] font-mono tracking-widest opacity-60">
-                      0{idx + 1}
-                    </span>
-                    <span className="font-serif-luxury text-2xl uppercase tracking-wider font-light">
-                      {mat.name}
-                    </span>
-                  </div>
-
-                  <span className="text-[10px] font-mono tracking-widest uppercase">
-                    {isSelected ? "ACTIVE ●" : "SELECT →"}
-                  </span>
-                </button>
-              );
-            })}
-          </div>
-
-          {/* Arrow Navigation Toolbar for Stone Styles */}
-          <div className="pt-6 border-t border-[var(--border-subtle)] flex items-center justify-between">
-            <div>
-              <span className="text-[10px] font-mono tracking-widest uppercase text-[var(--text-muted)] block">
-                STYLE {currentStyleIndex + 1} OF {currentVarieties.length}
+            <div className="mt-4 flex items-center space-x-3">
+              <span className="px-2.5 py-1 bg-[#C5A880]/20 border border-[#C5A880]/50 text-[#E8D5B5] text-[10px] font-mono tracking-widest uppercase">
+                {activeStone.category}
               </span>
-              <span className="text-xs font-mono text-[var(--text-primary)] uppercase tracking-wider font-medium">
-                {activeVariety.name}
+              <span className="text-xs font-mono text-stone-400 uppercase tracking-wider">
+                {activeStone.origin}
               </span>
             </div>
 
-            {/* Previous / Next Arrow Navigation */}
-            <div className="flex items-center space-x-2.5">
+            <p className="mt-3 text-sm text-stone-300 font-light leading-relaxed max-w-md">
+              {activeStone.description}
+            </p>
+          </div>
+
+          {/* Architectural Specification Slots (No Tabs) */}
+          <div className="grid grid-cols-2 gap-3.5 pt-2 border-t border-white/15">
+            {/* Slot 1: Geology */}
+            <div className="p-3 bg-white/5 border border-white/10 rounded-xs">
+              <span className="block text-[9px] font-mono text-stone-400 uppercase tracking-widest">
+                GEOLOGICAL PETROLOGY
+              </span>
+              <span className="block text-xs font-mono text-stone-200 mt-1 uppercase truncate font-medium">
+                {activeStone.geology}
+              </span>
+            </div>
+
+            {/* Slot 2: Calibration */}
+            <div className="p-3 bg-white/5 border border-white/10 rounded-xs">
+              <span className="block text-[9px] font-mono text-stone-400 uppercase tracking-widest">
+                CALIBRATION
+              </span>
+              <span className="block text-xs font-mono text-stone-200 mt-1 uppercase truncate font-medium">
+                {activeStone.thickness}
+              </span>
+            </div>
+
+            {/* Slot 3: Surface Finish */}
+            <div className="p-3 bg-white/5 border border-white/10 rounded-xs">
+              <span className="block text-[9px] font-mono text-stone-400 uppercase tracking-widest">
+                SURFACE FINISH
+              </span>
+              <span className="block text-xs font-mono text-[#E8D5B5] mt-1 uppercase truncate font-medium">
+                {activeStone.finish}
+              </span>
+            </div>
+
+            {/* Slot 4: Density & Absorption */}
+            <div className="p-3 bg-white/5 border border-white/10 rounded-xs">
+              <span className="block text-[9px] font-mono text-stone-400 uppercase tracking-widest">
+                ABSORPTION & DENSITY
+              </span>
+              <span className="block text-xs font-mono text-stone-200 mt-1 uppercase truncate font-medium">
+                {activeStone.absorption}
+              </span>
+            </div>
+
+            {/* Slot 5: Applications (Full width) */}
+            <div className="col-span-2 p-3 bg-white/5 border border-white/10 rounded-xs">
+              <span className="block text-[9px] font-mono text-stone-400 uppercase tracking-widest">
+                RECOMMENDED SPECIFICATION
+              </span>
+              <span className="block text-xs font-mono text-stone-200 mt-1 uppercase font-medium">
+                {activeStone.application}
+              </span>
+            </div>
+
+            {/* Slot 6: Yard Status */}
+            <div className="col-span-2 flex items-center justify-between px-3 py-2 bg-black/40 border border-white/10 rounded-xs text-[10px] font-mono">
+              <span className="text-stone-400 uppercase tracking-wider">
+                YARD BUNDLE: {activeStone.lotCode}
+              </span>
+              <span className="text-emerald-400 uppercase flex items-center gap-1.5 font-medium">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                AVAILABLE IN YARD
+              </span>
+            </div>
+          </div>
+
+          {/* Arrow Navigation Toolbar */}
+          <div className="pt-4 border-t border-white/15 flex items-center justify-between">
+            <div>
+              <span className="text-[10px] font-mono tracking-widest uppercase text-stone-400 block">
+                LOT {currentIndex + 1} OF {totalStones}
+              </span>
+              <span className="text-sm font-serif-luxury text-white uppercase tracking-wider font-light">
+                {activeStone.name}
+              </span>
+            </div>
+
+            {/* Arrow Navigation Buttons */}
+            <div className="flex items-center space-x-3">
               <button
                 type="button"
                 onClick={handlePrev}
                 aria-label="Previous Stone Style"
-                className="w-12 h-12 rounded-xs border border-[var(--border-subtle)] hover:border-[var(--text-primary)] flex items-center justify-center text-[var(--text-primary)] hover:bg-[var(--text-primary)] hover:text-[var(--bg-primary)] transition-all duration-200"
+                className="w-12 h-12 rounded-xs border border-white/20 hover:border-white bg-white/5 hover:bg-white text-white hover:text-black flex items-center justify-center transition-all duration-300"
               >
-                <span className="text-lg">←</span>
+                <span className="text-xl leading-none">←</span>
               </button>
 
               <button
                 type="button"
                 onClick={handleNext}
                 aria-label="Next Stone Style"
-                className="w-12 h-12 rounded-xs border border-[var(--border-subtle)] hover:border-[var(--text-primary)] flex items-center justify-center text-[var(--text-primary)] hover:bg-[var(--text-primary)] hover:text-[var(--bg-primary)] transition-all duration-200"
+                className="w-12 h-12 rounded-xs border border-white/20 hover:border-white bg-white/5 hover:bg-white text-white hover:text-black flex items-center justify-center transition-all duration-300"
               >
-                <span className="text-lg">→</span>
+                <span className="text-xl leading-none">→</span>
               </button>
             </div>
           </div>
         </div>
 
-        {/* RIGHT COLUMN (BAGAL ME): Featured Stone Style Showcase */}
-        <div className="lg:col-span-7">
-          <div className="p-4 sm:p-6 rounded-sm border border-[var(--border-subtle)] bg-[var(--bg-secondary)] shadow-xl relative">
-            {/* Stone Image with smooth transition */}
-            <div className="relative aspect-[4/3] sm:aspect-[16/11] w-full overflow-hidden rounded-xs bg-black/20">
+        {/* RIGHT COLUMN (BAGAL ME): Featured Stone Showcase & Slot Thumbnails */}
+        <div className="lg:col-span-7 flex flex-col space-y-6">
+          {/* Main Slab Showcase Frame */}
+          <div className="relative p-5 sm:p-7 rounded-sm border border-white/20 bg-black/60 backdrop-blur-xl shadow-2xl">
+            {/* Slab Image Frame */}
+            <div className="relative aspect-[4/3] sm:aspect-[16/10] w-full overflow-hidden rounded-xs bg-stone-900 border border-white/10 group">
               <Image
-                key={activeVariety.name}
-                src={activeVariety.image}
-                alt={activeVariety.name}
+                key={activeStone.id}
+                src={activeStone.image}
+                alt={activeStone.name}
                 fill
                 priority
                 sizes="(max-width: 1024px) 100vw, 60vw"
-                className="object-cover transition-transform duration-700 ease-out hover:scale-105"
+                className="object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
               />
 
-              {/* In-Yard badge */}
-              <div className="absolute top-4 left-4 px-3 py-1 bg-black/75 backdrop-blur-md border border-white/20 text-white text-[10px] font-mono tracking-widest uppercase">
-                {materialData.name} · IN LUCKNOW YARD
+              {/* Top Slab Badge */}
+              <div className="absolute top-4 left-4 px-3 py-1 bg-black/80 backdrop-blur-md border border-white/20 text-white text-[10px] font-mono tracking-widest uppercase">
+                {activeStone.category} · {activeStone.origin}
+              </div>
+
+              {/* Bottom Subtle Overlay Note */}
+              <div className="absolute bottom-4 left-4 right-4 p-3 bg-black/85 backdrop-blur-md border border-white/15 flex items-center justify-between text-[10px] font-mono">
+                <span className="text-stone-300 uppercase tracking-wider">
+                  TEXTURE LOADED IN BACKGROUND
+                </span>
+                <span className="text-[#E8D5B5] uppercase">
+                  {activeStone.finish}
+                </span>
               </div>
             </div>
 
-            {/* Stone Information */}
+            {/* Title & Direct Enquiry Row */}
             <div className="mt-6 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
               <div>
-                <span className="text-[10px] font-mono tracking-widest uppercase text-[var(--text-muted)] block">
-                  ORIGIN: {activeVariety.origin}
+                <span className="text-[10px] font-mono tracking-widest uppercase text-stone-400 block">
+                  AUTHENTIC GANGSAW SLAB
                 </span>
-
-                <h3 className="font-serif-luxury text-3xl sm:text-4xl uppercase font-light text-[var(--text-primary)] tracking-wide mt-1">
-                  {activeVariety.name}
+                <h3 className="font-serif-luxury text-3xl sm:text-4xl uppercase font-light text-white tracking-wide mt-1">
+                  {activeStone.name}
                 </h3>
-
-                <p className="text-xs sm:text-sm text-[var(--text-secondary)] font-light mt-2 max-w-lg leading-relaxed">
-                  {activeVariety.note}
-                </p>
               </div>
 
-              {/* Direct WhatsApp Enquiry for this specific stone style */}
               <a
                 href={`https://wa.me/${SHOWROOM_INFO.whatsapp}?text=${encodeURIComponent(
-                  `Hi Stone Gallery, I am enquiring about availability and rates for ${activeVariety.name} (${activeVariety.origin}) under the ${materialData.name} collection.`
+                  `Hi Stone Gallery, I would like to enquire about availability and rates for ${activeStone.name} (${activeStone.origin}, ${activeStone.lotCode}).`
                 )}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-5 py-3 bg-[var(--text-primary)] text-[var(--bg-primary)] text-[10px] font-mono tracking-widest uppercase rounded-xs hover:opacity-85 transition-opacity whitespace-nowrap self-start sm:self-end font-medium"
+                className="px-6 py-3.5 bg-white text-black text-[10px] font-mono tracking-widest uppercase rounded-xs hover:bg-stone-200 transition-colors whitespace-nowrap self-start sm:self-end font-medium"
               >
                 ENQUIRE THIS SLAB →
               </a>
             </div>
+          </div>
 
-            {/* Thumbnail dots / clickable selector for all styles in family */}
-            <div className="mt-6 pt-4 border-t border-[var(--border-subtle)] flex items-center justify-between">
-              <span className="text-[10px] font-mono tracking-widest text-[var(--text-muted)] uppercase">
-                ALL {materialData.name} LOTS:
-              </span>
+          {/* Quick Stone Slot Thumbnails Rail (Click to jump to any stone) */}
+          <div>
+            <div className="flex items-center justify-between mb-3 text-[10px] font-mono text-stone-400 uppercase tracking-wider">
+              <span>EXPLORE ALL 8 CURATED SLABS:</span>
+              <span>CLICK TO VIEW</span>
+            </div>
 
-              <div className="flex items-center space-x-2">
-                {currentVarieties.map((v, i) => (
+            <div className="grid grid-cols-4 sm:grid-cols-8 gap-2">
+              {DETAILED_STONES.map((stone, idx) => {
+                const isSelected = idx === currentIndex;
+                return (
                   <button
-                    key={v.name}
+                    key={stone.id}
                     type="button"
-                    onClick={() => setCurrentStyleIndex(i)}
-                    className={`h-2 transition-all duration-300 rounded-full ${
-                      i === currentStyleIndex
-                        ? "w-8 bg-[var(--text-primary)]"
-                        : "w-2 bg-[var(--border-subtle)] hover:bg-[var(--text-muted)]"
+                    onClick={() => handleSelectStone(idx)}
+                    className={`relative aspect-square rounded-xs overflow-hidden border transition-all duration-300 ${
+                      isSelected
+                        ? "border-[#C5A880] ring-2 ring-[#C5A880]/50 scale-105"
+                        : "border-white/15 opacity-60 hover:opacity-100 hover:border-white/40"
                     }`}
-                    aria-label={`Go to ${v.name}`}
-                  />
-                ))}
-              </div>
+                    title={stone.name}
+                  >
+                    <Image
+                      src={stone.image}
+                      alt={stone.name}
+                      fill
+                      sizes="80px"
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-black/20" />
+                    {isSelected && (
+                      <div className="absolute bottom-1 right-1 w-2 h-2 rounded-full bg-[#C5A880]" />
+                    )}
+                  </button>
+                );
+              })}
             </div>
           </div>
         </div>

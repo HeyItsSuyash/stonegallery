@@ -15,6 +15,163 @@ export interface MaterialFamily {
   varieties: Variety[];
 }
 
+export interface DetailedStone {
+  id: string;
+  name: string;
+  category: "GRANITE" | "MARBLE" | "NATURAL STONE";
+  familyId: "granite" | "marble" | "stone";
+  origin: string;
+  geology: string;
+  finish: string;
+  thickness: string;
+  density: string;
+  absorption: string;
+  application: string;
+  lotCode: string;
+  image: string;
+  textureImage: string;
+  description: string;
+}
+
+export const DETAILED_STONES: DetailedStone[] = [
+  {
+    id: "rajasthan-z-black",
+    name: "RAJASTHAN Z-BLACK",
+    category: "GRANITE",
+    familyId: "granite",
+    origin: "Rajasthan, India",
+    geology: "Plutonic Quartz Diorite",
+    finish: "High-Gloss Diamond Mirror Polish",
+    thickness: "18mm / 20mm Gangsaw Slabs",
+    density: "2.96 g/cm³ High Density",
+    absorption: "< 0.04% Zero Porosity",
+    application: "Kitchen Countertops, Foyers & Chowkhats",
+    lotCode: "LOT RZ-108 · IN YARD",
+    image: "https://images.unsplash.com/photo-1533090161767-e6ffed986c88?auto=format&fit=crop&w=1600&q=85",
+    textureImage: "https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?auto=format&fit=crop&w=2400&q=85",
+    description: "Deep obsidian field with microscopic quartz crystals. Complete stain-proof durability against turmeric, citrus, and oil.",
+  },
+  {
+    id: "statuario-altissimo",
+    name: "STATUARIO ALTISSIMO",
+    category: "MARBLE",
+    familyId: "marble",
+    origin: "Carrara, Italy",
+    geology: "Metamorphic Calcite Matrix",
+    finish: "Bookmatched Honed & Polished",
+    thickness: "18mm Calibrated",
+    density: "2.71 g/cm³ Pure Calcite",
+    absorption: "0.12% Low Porosity",
+    application: "Living Hall Flooring & Feature Slabs",
+    lotCode: "LOT SA-402 · IN YARD",
+    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=85",
+    textureImage: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=2400&q=85",
+    description: "Pure alabaster-white ground with bold, expressive graphite-grey veining. Symmetrical bookmatch layouts available.",
+  },
+  {
+    id: "black-galaxy",
+    name: "BLACK GALAXY",
+    category: "GRANITE",
+    familyId: "granite",
+    origin: "Andhra Pradesh, India",
+    geology: "Gabbroic Anorthosite",
+    finish: "Epoxy Line Polished",
+    thickness: "20mm Gangsaw Slabs",
+    density: "2.98 g/cm³",
+    absorption: "< 0.05% Impervious",
+    application: "Countertops & Vanity Surfaces",
+    lotCode: "LOT BG-720 · IN YARD",
+    image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=85",
+    textureImage: "https://images.unsplash.com/photo-1533090161767-e6ffed986c88?auto=format&fit=crop&w=2400&q=85",
+    description: "Midnight black field with natural golden-bronze bronzite flecks that shimmer brightly under ambient lighting.",
+  },
+  {
+    id: "makrana-pure-white",
+    name: "MAKRANA PURE WHITE",
+    category: "MARBLE",
+    familyId: "marble",
+    origin: "Makrana, Rajasthan",
+    geology: "98%+ Crystalline Calcite",
+    finish: "Fine Water Honed",
+    thickness: "18mm Gangsaw Slabs",
+    density: "2.73 g/cm³",
+    absorption: "< 0.10% Zero Discoloration",
+    application: "Temple Sanctuaries, Living Rooms & Patios",
+    lotCode: "LOT MW-315 · IN YARD",
+    image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=85",
+    textureImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2400&q=85",
+    description: "The historic Indian architectural stone. Pure white calcium carbonate crystalline structure that grows more luminous with age.",
+  },
+  {
+    id: "kota-river-blue",
+    name: "KOTA RIVER BLUE",
+    category: "NATURAL STONE",
+    familyId: "stone",
+    origin: "Kota, Rajasthan",
+    geology: "Fine-Grained River Limestone",
+    finish: "River Washed / Natural Honed",
+    thickness: "25mm Calibrated",
+    density: "2.65 g/cm³",
+    absorption: "0.20% Thermal Stable",
+    application: "Courtyards, Verandahs & Heat-Proof Flooring",
+    lotCode: "LOT KB-112 · IN YARD",
+    image: "https://images.unsplash.com/photo-1600573472550-8090b5e0745e?auto=format&fit=crop&w=1600&q=85",
+    textureImage: "https://images.unsplash.com/photo-1600573472550-8090b5e0745e?auto=format&fit=crop&w=2400&q=85",
+    description: "Velvety greenish-blue natural limestone. Stays naturally cool under bare feet even during scorching North Indian summers.",
+  },
+  {
+    id: "blue-pearl",
+    name: "BLUE PEARL",
+    category: "GRANITE",
+    familyId: "granite",
+    origin: "Larvik, Norway",
+    geology: "Plutonic Larvikite Monzonite",
+    finish: "Diamond Polished",
+    thickness: "20mm Slabs",
+    density: "2.85 g/cm³",
+    absorption: "< 0.05%",
+    application: "Luxury Kitchen Islands & Wall Panels",
+    lotCode: "LOT BP-905 · IN YARD",
+    image: "https://images.unsplash.com/photo-1600573472550-8090b5e0745e?auto=format&fit=crop&w=1600&q=85",
+    textureImage: "https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?auto=format&fit=crop&w=2400&q=85",
+    description: "Silvery-blue iridescent feldspar crystals that refract natural light like gemstones. Exceptional luxury presence.",
+  },
+  {
+    id: "jaisalmer-teak",
+    name: "JAISALMER TEAK",
+    category: "NATURAL STONE",
+    familyId: "stone",
+    origin: "Jaisalmer, Rajasthan",
+    geology: "Sedimentary Golden Sandstone",
+    finish: "Honed Natural Woodgrain Texture",
+    thickness: "25mm / 30mm Slabs",
+    density: "2.45 g/cm³",
+    absorption: "0.35%",
+    application: "Monolithic Cladding, Jaalis & Elevations",
+    lotCode: "LOT JT-504 · IN YARD",
+    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=85",
+    textureImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2400&q=85",
+    description: "Golden yellow sandstone with organic mineral woodgrain bands. Gives architectural elevations warmth and historical dignity.",
+  },
+  {
+    id: "tan-brown",
+    name: "TAN BROWN",
+    category: "GRANITE",
+    familyId: "granite",
+    origin: "Telangana, India",
+    geology: "Coarse-Grained Charnockite",
+    finish: "Mirror Polish / Leathered",
+    thickness: "20mm Gangsaw",
+    density: "2.92 g/cm³",
+    absorption: "< 0.06%",
+    application: "Heavy Commercial Flooring & Kitchen Slabs",
+    lotCode: "LOT TB-219 · IN YARD",
+    image: "https://images.unsplash.com/photo-1600585152220-90363fe7e115?auto=format&fit=crop&w=1600&q=85",
+    textureImage: "https://images.unsplash.com/photo-1600585152220-90363fe7e115?auto=format&fit=crop&w=2400&q=85",
+    description: "Rich dark chocolate matrix with fiery burnt-orange and amber mineral blooms. Extremely tough against scratch wear.",
+  },
+];
+
 export const MATERIAL_FAMILIES: Record<"marble" | "granite" | "stone", MaterialFamily> = {
   marble: {
     id: "marble",
