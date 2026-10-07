@@ -12,8 +12,6 @@ export function Navigation() {
     activeMaterial,
     setActiveMaterialById,
     setHoveredMaterialById,
-    setCursor,
-    resetCursor,
   } = useMaterialTheme();
 
   const [isScrolled, setIsScrolled] = useState(false);
@@ -41,8 +39,6 @@ export function Navigation() {
           <Link
             href="/"
             className="group"
-            onMouseEnter={() => setCursor("default")}
-            onMouseLeave={resetCursor}
           >
             <Logo />
           </Link>
@@ -55,14 +51,8 @@ export function Navigation() {
                 <button
                   key={mat.id}
                   onClick={() => setActiveMaterialById(mat.id)}
-                  onMouseEnter={() => {
-                    setHoveredMaterialById(mat.id);
-                    setCursor("explore", mat.name);
-                  }}
-                  onMouseLeave={() => {
-                    setHoveredMaterialById(null);
-                    resetCursor();
-                  }}
+                  onMouseEnter={() => setHoveredMaterialById(mat.id)}
+                  onMouseLeave={() => setHoveredMaterialById(null)}
                   className={`py-1 transition-all duration-300 relative group ${
                     isActive
                       ? "text-[var(--accent)] font-semibold"
@@ -127,19 +117,17 @@ export function Navigation() {
               <span>WHATSAPP</span>
             </a>
 
-            <a
-              href="#showroom"
-              className={`px-4 py-2 border text-xs font-mono tracking-widest uppercase transition-all duration-300 flex items-center space-x-1.5 ${
-                isScrolled
-                  ? "border-[var(--text-primary)] text-[var(--text-primary)] hover:bg-[var(--text-primary)] hover:text-[var(--bg-primary)]"
-                  : "border-white/60 text-white hover:bg-white hover:text-black"
-              }`}
-              onMouseEnter={() => setCursor("visit", "VISIT")}
-              onMouseLeave={resetCursor}
-            >
-              <span>VISIT SHOWROOM</span>
-              <ArrowUpRight className="w-3 h-3" />
-            </a>
+              <a
+                href="#showroom"
+                className={`px-4 py-2 border text-xs font-mono tracking-widest uppercase transition-all duration-300 flex items-center space-x-1.5 ${
+                  isScrolled
+                    ? "border-[var(--text-primary)] text-[var(--text-primary)] hover:bg-[var(--text-primary)] hover:text-[var(--bg-primary)]"
+                    : "border-white/60 text-white hover:bg-white hover:text-black"
+                }`}
+              >
+                <span>VISIT SHOWROOM</span>
+                <ArrowUpRight className="w-3 h-3" />
+              </a>
           </div>
 
           {/* Mobile Menu Button */}

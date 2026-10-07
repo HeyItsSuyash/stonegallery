@@ -2,11 +2,9 @@
 
 import React from "react";
 import Image from "next/image";
-import { useMaterialTheme } from "@/context/MaterialThemeContext";
 import { MapPin, Phone, MessageSquare, Navigation, Clock, CheckCircle } from "lucide-react";
 
 export function ShowroomSection() {
-  const { setCursor, resetCursor } = useMaterialTheme();
 
   return (
     <section
@@ -103,8 +101,6 @@ export function ShowroomSection() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full py-3.5 bg-[var(--text-primary)] text-[var(--bg-primary)] text-xs font-mono tracking-widest uppercase hover:bg-[var(--accent)] hover:text-white transition-colors flex items-center justify-center space-x-2"
-                onMouseEnter={() => setCursor("visit", "MAPS")}
-                onMouseLeave={resetCursor}
               >
                 <Navigation className="w-4 h-4" />
                 <span>GET DIRECTIONS ON GOOGLE MAPS →</span>

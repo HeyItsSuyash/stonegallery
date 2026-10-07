@@ -3,11 +3,9 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { ALL_PRODUCTS, ProductItem } from "@/data/materials";
-import { useMaterialTheme } from "@/context/MaterialThemeContext";
 import { MessageSquare, Check, ShieldCheck, ArrowUpRight } from "lucide-react";
 
 export function ProductDiscovery() {
-  const { setCursor, resetCursor } = useMaterialTheme();
   const [activeCategory, setActiveCategory] = useState<string>("all");
 
   const filteredProducts =
@@ -76,8 +74,6 @@ export function ProductDiscovery() {
               <div
                 key={prod.id}
                 className="group border border-[var(--border-color)] bg-[var(--bg-secondary)] p-6 shadow-[var(--slab-shadow)] flex flex-col justify-between transition-all duration-500 hover:-translate-y-1"
-                onMouseEnter={() => setCursor("explore", prod.name)}
-                onMouseLeave={resetCursor}
               >
                 {/* Category & Status */}
                 <div className="flex items-center justify-between text-[10px] font-mono tracking-widest uppercase text-[var(--text-muted)] mb-3">

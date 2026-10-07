@@ -8,8 +8,7 @@ import { Logo } from "@/components/Logo";
 import { MessageSquare, Phone, MapPin, Navigation } from "lucide-react";
 
 export function Footer() {
-  const { activeMaterial, setActiveMaterialById, setCursor, resetCursor } =
-    useMaterialTheme();
+  const { activeMaterial, setActiveMaterialById } = useMaterialTheme();
 
   return (
     <footer className="bg-[var(--bg-primary)] border-t border-[var(--border-color)] text-[var(--text-primary)] transition-colors duration-700">

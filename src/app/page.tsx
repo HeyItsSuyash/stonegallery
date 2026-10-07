@@ -2,7 +2,6 @@
 
 import React from "react";
 import { MaterialThemeProvider } from "@/context/MaterialThemeContext";
-import { CustomCursor } from "@/components/CustomCursor";
 import { Navigation } from "@/components/Navigation";
 import { Hero } from "@/components/Hero";
 import { MaterialExplorer } from "@/components/MaterialExplorer";
@@ -21,7 +20,7 @@ export default function HomePage() {
     name: "Stone Gallery",
     alternateName: "Stone Gallery Lucknow - Marble, Granite & Natural Stone Dealer",
     url: "https://stonegallery.in",
-    logo: "https://stonegallery.in/icon.svg",
+    logo: "https://stonegallery.in/logo.png",
     image: [
       "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=85",
       "https://images.unsplash.com/photo-1533090161767-e6ffed986c88?auto=format&fit=crop&w=1600&q=85",
@@ -77,9 +76,6 @@ export default function HomePage() {
 
       {/* Subtle Ambient Grain Overlay */}
       <div className="fixed inset-0 pointer-events-none z-30 bg-grain opacity-35 mix-blend-overlay" />
-
-      {/* Desktop Custom Precision Cursor */}
-      <CustomCursor />
 
       {/* Material-driven Floating Navigation */}
       <Navigation />

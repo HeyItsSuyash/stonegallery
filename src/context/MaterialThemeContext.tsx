@@ -3,29 +3,13 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { MATERIALS, MaterialCategory } from "@/data/materials";
 
-export type CursorType =
-  | "default"
-  | "explore"
-  | "slab"
-  | "macro"
-  | "view"
-  | "visit"
-  | "drag"
-  | "arrow";
-
 interface MaterialThemeContextType {
   activeMaterial: MaterialCategory;
   hoveredMaterial: MaterialCategory | null;
   isTransitioning: boolean;
   transitionStage: number; // 0 to 1
-  cursorState: {
-    type: CursorType;
-    label?: string;
-  };
   setActiveMaterialById: (id: string) => void;
   setHoveredMaterialById: (id: string | null) => void;
-  setCursor: (type: CursorType, label?: string) => void;
-  resetCursor: () => void;
 }
 
 const MaterialThemeContext = createContext<MaterialThemeContextType | undefined>(
@@ -44,12 +28,6 @@ export function MaterialThemeProvider({
     useState<MaterialCategory | null>(null);
   const [isTransitioning, setIsTransitioning] = useState<boolean>(false);
   const [transitionStage, setTransitionStage] = useState<number>(0);
-  const [cursorState, setCursorState] = useState<{
-    type: CursorType;
-    label?: string;
-  }>({
-    type: "default",
-  });
 
   // Apply data-material attribute to document root
   useEffect(() => {
@@ -67,16 +45,16 @@ export function MaterialThemeProvider({
     const timer1 = setTimeout(() => {
       setTransitionStage(0.6);
       setActiveMaterial(found);
-    }, 450);
+    }, 400);
 
     const timer2 = setTimeout(() => {
       setTransitionStage(1);
-    }, 900);
+    }, 800);
 
     const timer3 = setTimeout(() => {
       setIsTransitioning(false);
       setTransitionStage(0);
-    }, 1300);
+    }, 1100);
 
     return () => {
       clearTimeout(timer1);
@@ -94,14 +72,6 @@ export function MaterialThemeProvider({
     }
   };
 
-  const setCursor = (type: CursorType, label?: string) => {
-    setCursorState({ type, label });
-  };
-
-  const resetCursor = () => {
-    setCursorState({ type: "default" });
-  };
-
   return (
     <MaterialThemeContext.Provider
       value={{
@@ -109,33 +79,30 @@ export function MaterialThemeProvider({
         hoveredMaterial,
         isTransitioning,
         transitionStage,
-        cursorState,
         setActiveMaterialById,
         setHoveredMaterialById,
-        setCursor,
-        resetCursor,
       }}
     >
-      {/* Cinematic Stone Transition Overlay */}
+      {/* Subtle Material Atmosphere Transition Notification */}
       {isTransitioning && (
         <div
-          className="fixed inset-0 z-50 pointer-events-none transition-opacity duration-500 flex items-center justify-center overflow-hidden"
+          className="fixed inset-0 z-50 pointer-events-none transition-opacity duration-300 flex items-center justify-center overflow-hidden"
           style={{
             backgroundColor:
               transitionStage < 0.6
-                ? "rgba(18, 19, 21, 0.45)"
-                : "rgba(18, 19, 21, 0.2)",
-            backdropFilter: "blur(12px)",
+                ? "rgba(18, 19, 21, 0.4)"
+                : "rgba(18, 19, 21, 0.15)",
+            backdropFilter: "blur(8px)",
           }}
         >
-          <div className="text-center transform transition-all duration-700">
+          <div className="text-center transform transition-all duration-500">
             <span className="text-[10px] tracking-[0.4em] uppercase text-stone-300 block mb-2 font-mono">
-              ENTERING ATMOSPHERE
+              ATMOSPHERE
             </span>
-            <span className="font-serif-luxury text-4xl md:text-6xl text-white tracking-widest uppercase">
+            <span className="font-serif-luxury text-4xl md:text-5xl text-white tracking-widest uppercase">
               {activeMaterial.name}
             </span>
-            <div className="w-16 h-[1px] bg-white/40 mx-auto mt-4" />
+            <div className="w-12 h-[1px] bg-white/40 mx-auto mt-3" />
           </div>
         </div>
       )}

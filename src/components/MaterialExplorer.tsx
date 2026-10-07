@@ -11,8 +11,6 @@ export function MaterialExplorer() {
     activeMaterial,
     setActiveMaterialById,
     setHoveredMaterialById,
-    setCursor,
-    resetCursor,
   } = useMaterialTheme();
 
   return (
@@ -47,14 +45,8 @@ export function MaterialExplorer() {
             <div
               key={mat.id}
               onClick={() => setActiveMaterialById(mat.id)}
-              onMouseEnter={() => {
-                setHoveredMaterialById(mat.id);
-                setCursor("explore", mat.name);
-              }}
-              onMouseLeave={() => {
-                setHoveredMaterialById(null);
-                resetCursor();
-              }}
+              onMouseEnter={() => setHoveredMaterialById(mat.id)}
+              onMouseLeave={() => setHoveredMaterialById(null)}
               className={`group relative flex flex-col justify-between p-6 sm:p-8 border transition-all duration-700 cursor-pointer overflow-hidden shadow-[var(--slab-shadow)] ${
                 isActive
                   ? "border-[var(--accent)] bg-[var(--bg-surface)] ring-1 ring-[var(--accent)]"

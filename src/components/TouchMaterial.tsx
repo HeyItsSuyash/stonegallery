@@ -6,7 +6,7 @@ import { useMaterialTheme } from "@/context/MaterialThemeContext";
 import { Sparkles, Eye, ArrowRight } from "lucide-react";
 
 export function TouchMaterial() {
-  const { activeMaterial, setCursor, resetCursor } = useMaterialTheme();
+  const { activeMaterial } = useMaterialTheme();
   const [viewMode, setViewMode] = useState<"macro" | "slab">("macro");
   const [cursorPos, setCursorPos] = useState({ x: 50, y: 50 });
 
@@ -64,10 +64,8 @@ export function TouchMaterial() {
 
         {/* The Tactile Surface Stage */}
         <div
-          className="relative aspect-[16/9] w-full overflow-hidden border border-[var(--border-color)] bg-black shadow-[var(--slab-shadow)] group cursor-crosshair"
+          className="relative aspect-[16/9] w-full overflow-hidden border border-[var(--border-color)] bg-black shadow-[var(--slab-shadow)] group"
           onMouseMove={handleMouseMove}
-          onMouseEnter={() => setCursor("drag", "INSPECT")}
-          onMouseLeave={resetCursor}
         >
           {/* Active Image */}
           <Image

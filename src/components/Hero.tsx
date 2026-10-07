@@ -1,39 +1,17 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Image from "next/image";
 import { useMaterialTheme } from "@/context/MaterialThemeContext";
-import { ArrowDown, ArrowUpRight, Compass } from "lucide-react";
+import { ArrowDown, ArrowUpRight } from "lucide-react";
 
 export function Hero() {
-  const { activeMaterial, setCursor, resetCursor } = useMaterialTheme();
-  const [mouseOffset, setMouseOffset] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      // Subtle cursor depth parallax for desktop
-      const x = (e.clientX / window.innerWidth - 0.5) * 15;
-      const y = (e.clientY / window.innerHeight - 0.5) * 15;
-      setMouseOffset({ x, y });
-    };
-
-    if (!window.matchMedia("(pointer: coarse)").matches) {
-      window.addEventListener("mousemove", handleMouseMove, { passive: true });
-    }
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
+  const { activeMaterial } = useMaterialTheme();
 
   return (
     <section className="relative min-h-[100svh] w-full flex flex-col justify-between overflow-hidden bg-black text-white select-none">
-      {/* Background Natural Stone Slab Hero Visual with Subtle Parallax */}
-      <div
-        className="absolute inset-0 z-0 scale-105 transition-transform duration-700 ease-out"
-        style={{
-          transform: `scale(1.05) translate3d(${mouseOffset.x * -0.5}px, ${
-            mouseOffset.y * -0.5
-          }px, 0)`,
-        }}
-      >
+      {/* Background Natural Stone Slab Hero Visual - Clean, Solid, No Parallax */}
+      <div className="absolute inset-0 z-0">
         <Image
           src={activeMaterial.heroImage}
           alt={`${activeMaterial.name} Natural Slab`}
@@ -42,8 +20,8 @@ export function Hero() {
           sizes="100vw"
           className="object-cover opacity-85 filter brightness-90 contrast-105"
         />
-        {/* Subtle architectural vignette for legibility */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/35 to-black/60 pointer-events-none" />
+        {/* Architectural vignette for crisp typography legibility */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/60 pointer-events-none" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-black/50 pointer-events-none" />
       </div>
 
@@ -59,14 +37,7 @@ export function Hero() {
       </div>
 
       {/* Center Hero Typography */}
-      <div
-        className="relative z-10 px-6 md:px-12 max-w-7xl mx-auto w-full my-auto transition-transform duration-500 ease-out"
-        style={{
-          transform: `translate3d(${mouseOffset.x * 0.3}px, ${
-            mouseOffset.y * 0.3
-          }px, 0)`,
-        }}
-      >
+      <div className="relative z-10 px-6 md:px-12 max-w-7xl mx-auto w-full my-auto">
         <div className="max-w-4xl">
           <span className="block text-[11px] md:text-xs font-mono tracking-[0.45em] uppercase text-stone-300 mb-4">
             MARBLE · GRANITE · NATURAL STONE SHOWROOM
@@ -86,9 +57,7 @@ export function Hero() {
           <div className="mt-8 md:mt-10 flex flex-wrap items-center gap-4">
             <a
               href="#materials"
-              className="px-8 py-4 bg-white text-black text-xs font-mono tracking-[0.2em] uppercase font-semibold hover:bg-stone-200 transition-colors inline-flex items-center space-x-2"
-              onMouseEnter={() => setCursor("explore", "EXPLORE")}
-              onMouseLeave={resetCursor}
+              className="px-8 py-4 bg-white text-black text-xs font-mono tracking-[0.2em] uppercase font-semibold hover:bg-stone-200 transition-colors inline-flex items-center space-x-2 shadow-lg"
             >
               <span>EXPLORE MATERIALS</span>
               <ArrowDown className="w-3.5 h-3.5" />
@@ -97,8 +66,6 @@ export function Hero() {
             <a
               href="#showroom"
               className="px-8 py-4 border border-white/60 text-white text-xs font-mono tracking-[0.2em] uppercase hover:bg-white hover:text-black transition-colors inline-flex items-center space-x-2"
-              onMouseEnter={() => setCursor("visit", "VISIT")}
-              onMouseLeave={resetCursor}
             >
               <span>VISIT SHOWROOM</span>
               <ArrowUpRight className="w-3.5 h-3.5" />

@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { useMaterialTheme } from "@/context/MaterialThemeContext";
 import { MessageSquare, ArrowUpRight } from "lucide-react";
 
 interface ApplicationItem {
@@ -100,7 +99,6 @@ const APPLICATIONS: ApplicationItem[] = [
 ];
 
 export function ApplicationsSection() {
-  const { setCursor, resetCursor } = useMaterialTheme();
   const [activeTab, setActiveTab] = useState(0);
 
   const activeApp = APPLICATIONS[activeTab];
@@ -205,8 +203,6 @@ export function ApplicationsSection() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full py-3.5 bg-[var(--text-primary)] text-[var(--bg-primary)] text-xs font-mono tracking-widest uppercase hover:bg-[var(--accent)] hover:text-white transition-colors flex items-center justify-center space-x-2"
-                onMouseEnter={() => setCursor("visit", "ENQUIRE")}
-                onMouseLeave={resetCursor}
               >
                 <MessageSquare className="w-4 h-4" />
                 <span>ENQUIRE FOR THIS APPLICATION →</span>

@@ -7,7 +7,6 @@ import { MaterialCategory } from "@/data/materials";
 import { MaterialThemeProvider } from "@/context/MaterialThemeContext";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
-import { CustomCursor } from "@/components/CustomCursor";
 import { ArrowLeft, MessageSquare, Compass, ShieldCheck } from "lucide-react";
 
 export function MaterialDetailView({ material }: { material: MaterialCategory }) {
@@ -17,7 +16,6 @@ export function MaterialDetailView({ material }: { material: MaterialCategory })
         className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] transition-colors duration-700"
         data-material={material.id}
       >
-        <CustomCursor />
         <Navigation />
 
         {/* Hero Section for Material */}
