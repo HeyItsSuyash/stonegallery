@@ -2,125 +2,62 @@
 
 @layer base {
   :root {
-    --bg-primary: #F8F6F0;
-    --bg-secondary: #EFECE4;
-    --bg-surface: #E6E1D6;
-    --text-primary: #1C1B19;
-    --text-secondary: #575550;
-    --text-muted: #8A8780;
-    --accent: #9A7E5E;
-    --accent-glow: rgba(154, 126, 94, 0.18);
-    --border-color: rgba(28, 27, 25, 0.12);
-    --border-subtle: rgba(28, 27, 25, 0.06);
-    --slab-shadow: 0 30px 60px -15px rgba(28, 27, 25, 0.12);
-    --font-serif-family: var(--font-serif), "Cormorant Garamond", Georgia, serif;
-    --font-sans-family: var(--font-sans), "Manrope", -apple-system, sans-serif;
+    --bg-primary: #121316;
+    --bg-surface: #1B1D22;
+    --text-primary: #ECEAE4;
+    --text-secondary: #9B9DA4;
+    --text-muted: #646770;
+    --accent: #B8B3A8;
+    --border-color: rgba(236, 234, 228, 0.12);
+    --border-subtle: rgba(236, 234, 228, 0.06);
+    --font-serif-family: var(--font-serif), "Instrument Serif", Georgia, serif;
+    --font-sans-family: var(--font-sans), "Geist", -apple-system, sans-serif;
   }
 
-  /* Marble Theme */
+  /* Marble Atmosphere: Warm White / Cream */
   [data-material="marble"] {
-    --bg-primary: #F6F5F2;
-    --bg-secondary: #EBE9E4;
-    --bg-surface: #DFDDD6;
-    --text-primary: #18191B;
-    --text-secondary: #54565B;
-    --text-muted: #85888F;
-    --accent: #8E8A83;
-    --accent-glow: rgba(142, 138, 131, 0.2);
-    --border-color: rgba(24, 25, 27, 0.12);
-    --border-subtle: rgba(24, 25, 27, 0.06);
-    --slab-shadow: 0 30px 70px -20px rgba(24, 25, 27, 0.15);
+    --bg-primary: #F8F6F1;
+    --bg-surface: #EDEAE1;
+    --text-primary: #171719;
+    --text-secondary: #58585E;
+    --text-muted: #8E8D93;
+    --accent: #8A857B;
+    --border-color: rgba(23, 23, 25, 0.12);
+    --border-subtle: rgba(23, 23, 25, 0.05);
   }
 
-  /* Granite Theme */
+  /* Granite Atmosphere: Charcoal / Graphite */
   [data-material="granite"] {
-    --bg-primary: #151618;
-    --bg-secondary: #1E2023;
-    --bg-surface: #282A2E;
-    --text-primary: #F2EFEA;
-    --text-secondary: #A6A9B0;
-    --text-muted: #6B6F77;
-    --accent: #B8B2A8;
-    --accent-glow: rgba(184, 178, 168, 0.18);
-    --border-color: rgba(242, 239, 234, 0.12);
-    --border-subtle: rgba(242, 239, 234, 0.06);
-    --slab-shadow: 0 35px 80px -20px rgba(0, 0, 0, 0.6);
+    --bg-primary: #111214;
+    --bg-surface: #1B1C20;
+    --text-primary: #ECEAE4;
+    --text-secondary: #9B9DA4;
+    --text-muted: #62656E;
+    --accent: #C2BCB0;
+    --border-color: rgba(236, 234, 228, 0.12);
+    --border-subtle: rgba(236, 234, 228, 0.05);
   }
 
-  /* Travertine Theme */
-  [data-material="travertine"] {
-    --bg-primary: #EDE5D8;
-    --bg-secondary: #E2D7C6;
-    --bg-surface: #D5C8B3;
-    --text-primary: #241D17;
-    --text-secondary: #635344;
-    --text-muted: #968371;
-    --accent: #A37E55;
-    --accent-glow: rgba(163, 126, 85, 0.2);
-    --border-color: rgba(36, 29, 23, 0.12);
-    --border-subtle: rgba(36, 29, 23, 0.06);
-    --slab-shadow: 0 30px 70px -20px rgba(36, 29, 23, 0.18);
+  /* Natural Stone Atmosphere: Warm Mineral / Earth */
+  [data-material="stone"] {
+    --bg-primary: #EAE5DC;
+    --bg-surface: #DCD5C9;
+    --text-primary: #201E1A;
+    --text-secondary: #5C564C;
+    --text-muted: #8E8576;
+    --accent: #827562;
+    --border-color: rgba(32, 30, 26, 0.12);
+    --border-subtle: rgba(32, 30, 26, 0.05);
   }
 
-  /* Natural Stone Theme */
-  [data-material="natural-stone"] {
-    --bg-primary: #E9E3D9;
-    --bg-secondary: #DCD4C7;
-    --bg-surface: #CDC2B2;
-    --text-primary: #211E1A;
-    --text-secondary: #5A5349;
-    --text-muted: #8E8476;
-    --accent: #876E51;
-    --accent-glow: rgba(135, 110, 81, 0.2);
-    --border-color: rgba(33, 30, 26, 0.12);
-    --border-subtle: rgba(33, 30, 26, 0.06);
-    --slab-shadow: 0 30px 70px -20px rgba(33, 30, 26, 0.18);
+  * {
+    border-color: var(--border-color);
   }
 
-  /* Onyx Theme */
-  [data-material="onyx"] {
-    --bg-primary: #121214;
-    --bg-secondary: #1C1C20;
-    --bg-surface: #27262E;
-    --text-primary: #F9EFE3;
-    --text-secondary: #C7B5A0;
-    --text-muted: #857666;
-    --accent: #D4A373;
-    --accent-glow: rgba(212, 163, 115, 0.25);
-    --border-color: rgba(212, 163, 115, 0.18);
-    --border-subtle: rgba(212, 163, 115, 0.08);
-    --slab-shadow: 0 35px 80px -20px rgba(0, 0, 0, 0.7);
+  html, body {
+    transition: background-color 1000ms cubic-bezier(0.16, 1, 0.3, 1),
+                color 1000ms cubic-bezier(0.16, 1, 0.3, 1);
   }
-
-  /* Quartz Theme */
-  [data-material="quartz"] {
-    --bg-primary: #F3F3F5;
-    --bg-secondary: #E6E7EB;
-    --bg-surface: #D8DAE0;
-    --text-primary: #18191E;
-    --text-secondary: #515461;
-    --text-muted: #848796;
-    --accent: #7C869E;
-    --accent-glow: rgba(124, 134, 158, 0.2);
-    --border-color: rgba(24, 25, 30, 0.12);
-    --border-subtle: rgba(24, 25, 30, 0.06);
-    --slab-shadow: 0 30px 70px -20px rgba(24, 25, 30, 0.14);
-  }
-}
-
-html {
-  scroll-behavior: smooth;
-  font-family: var(--font-sans-family);
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
-  transition: background-color 1.2s cubic-bezier(0.16, 1, 0.3, 1), color 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-body {
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
-  overflow-x: hidden;
-  transition: background-color 1.2s cubic-bezier(0.16, 1, 0.3, 1), color 1.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .font-serif-luxury {
@@ -128,42 +65,22 @@ body {
   letter-spacing: -0.02em;
 }
 
-.font-sans-utility {
+.font-sans-editorial {
   font-family: var(--font-sans-family);
 }
 
-/* Subtle architectural grain */
-.bg-grain {
-  background-image: radial-gradient(rgba(0, 0, 0, 0.035) 1px, transparent 0);
-  background-size: 24px 24px;
+/* Subtle image zoom on hover */
+.img-zoom-container {
+  overflow: hidden;
+}
+.img-zoom-container img {
+  transition: transform 1200ms cubic-bezier(0.16, 1, 0.3, 1), filter 1200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.img-zoom-container:hover img {
+  transform: scale(1.04);
 }
 
-[data-material="granite"] .bg-grain,
-[data-material="onyx"] .bg-grain {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 0);
-}
-
-/* Custom minimal scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--text-muted);
-  border-radius: 9999px;
-  opacity: 0.3;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--accent);
-}
-
-/* Hide scrollbar for clean carousels */
+/* Hide scrollbar while preserving scroll */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }

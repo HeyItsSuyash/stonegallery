@@ -1,23 +1,23 @@
 import type { Metadata, Viewport } from "next";
-import { Cormorant_Garamond, Manrope } from "next/font/google";
+import { Instrument_Serif, Geist } from "next/font/google";
 import "./globals.css";
 
-const cormorant = Cormorant_Garamond({
+const instrumentSerif = Instrument_Serif({
   variable: "--font-serif",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400"],
   display: "swap",
 });
 
-const manrope = Manrope({
+const geist = Geist({
   variable: "--font-sans",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600"],
   display: "swap",
 });
 
 export const viewport: Viewport = {
-  themeColor: "#1A1B1C",
+  themeColor: "#121316",
   width: "device-width",
   initialScale: 1,
 };
@@ -25,90 +25,43 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL("https://stonegallery.in"),
   title: {
-    default: "STONE GALLERY | Earth, Shaped For Space | Lucknow",
-    template: "%s | Stone Gallery Lucknow",
+    default: "STONE GALLERY — Lucknow",
+    template: "%s — Stone Gallery",
   },
   description:
-    "A premier architectural stone, Italian marble, exotic granite, travertine and onyx surface studio in Lucknow, Uttar Pradesh. Discover earth's raw beauty shaped for timeless living spaces.",
-  keywords: [
-    "Stone Gallery Lucknow",
-    "Italian marble showroom Lucknow",
-    "granite showroom Lucknow",
-    "architectural stone Lucknow",
-    "marble showroom near Kamta",
-    "Ayodhya Road stone showroom",
-    "natural stone Uttar Pradesh",
-    "luxury marble India",
-    "travertine tiles Lucknow",
-    "onyx backlit wall Lucknow",
-    "kitchen granite countertops Lucknow",
-    "Statuario marble dealer Lucknow",
-  ],
-  authors: [{ name: "Stone Gallery Studio", url: "https://stonegallery.in" }],
-  creator: "Stone Gallery Studio",
-  publisher: "Stone Gallery Studio",
-  category: "Architecture & Luxury Surfaces",
-  alternates: {
-    canonical: "/",
-  },
+    "Marble, Granite, and Natural Stone. A physical showroom and slab yard in Lucknow, Uttar Pradesh.",
   icons: {
     icon: [
-      { url: "/favicon.png" },
-      { url: "/logo.png" },
+      { url: "/favicon.png", type: "image/png" },
+      { url: "/logo.png", type: "image/png" },
     ],
-    shortcut: "/favicon.png",
-    apple: "/apple-touch-icon.png",
+    apple: [
+      { url: "/apple-touch-icon.png", type: "image/png" },
+      { url: "/logo.png", type: "image/png" },
+    ],
   },
   openGraph: {
-    title: "STONE GALLERY | Earth, Shaped For Space | Lucknow",
-    description:
-      "Luxury architectural stone, Italian marble, exotic granite and surface studio in Lucknow, Uttar Pradesh. Explore raw slabs, tactile finishes, and curated living spaces.",
+    title: "STONE GALLERY — Lucknow",
+    description: "Marble, Granite, and Natural Stone showroom in Lucknow.",
     url: "https://stonegallery.in",
-    siteName: "Stone Gallery Lucknow",
+    siteName: "STONE GALLERY",
     locale: "en_IN",
     type: "website",
-    images: [
-      {
-        url: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=85",
-        width: 1600,
-        height: 900,
-        alt: "Stone Gallery - Earth, Shaped For Space",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "STONE GALLERY | Earth, Shaped For Space",
-    description:
-      "Premier architectural stone, Italian marble, granite, and surface studio in Lucknow, UP.",
-    images: [
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=85",
-    ],
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
+    images: [{ url: "https://stonegallery.in/logo.png", width: 800, height: 800, alt: "Stone Gallery" }],
   },
 };
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return (
-    <html
-      lang="en"
-      className={`${cormorant.variable} ${manrope.variable} h-full antialiased selection:bg-[#a38a6d]/20 selection:text-current`}
-    >
-      <body className="min-h-full flex flex-col font-sans overflow-x-hidden">
+    <html lang="en" className={`${instrumentSerif.variable} ${geist.variable} scroll-smooth`}>
+      <head>
+        <link rel="icon" href="/favicon.png" />
+      </head>
+      <body className="antialiased min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] transition-colors duration-1000 ease-out font-sans">
         {children}
       </body>
     </html>
