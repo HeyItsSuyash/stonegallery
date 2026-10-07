@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { useMaterialTheme } from "@/context/MaterialThemeContext";
-import { ArrowDown, Compass, Sparkles } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Compass } from "lucide-react";
 
 export function Hero() {
   const { activeMaterial, setCursor, resetCursor } = useMaterialTheme();
@@ -11,9 +11,9 @@ export function Hero() {
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      // Gentle depth parallax for desktop
-      const x = (e.clientX / window.innerWidth - 0.5) * 20;
-      const y = (e.clientY / window.innerHeight - 0.5) * 20;
+      // Subtle cursor depth parallax for desktop
+      const x = (e.clientX / window.innerWidth - 0.5) * 15;
+      const y = (e.clientY / window.innerHeight - 0.5) * 15;
       setMouseOffset({ x, y });
     };
 
@@ -25,36 +25,36 @@ export function Hero() {
 
   return (
     <section className="relative min-h-[100svh] w-full flex flex-col justify-between overflow-hidden bg-black text-white select-none">
-      {/* Background Cinematic Stone Macro Landscape with Cursor Parallax */}
+      {/* Background Natural Stone Slab Hero Visual with Subtle Parallax */}
       <div
         className="absolute inset-0 z-0 scale-105 transition-transform duration-700 ease-out"
         style={{
-          transform: `scale(1.06) translate3d(${mouseOffset.x * -0.6}px, ${
-            mouseOffset.y * -0.6
+          transform: `scale(1.05) translate3d(${mouseOffset.x * -0.5}px, ${
+            mouseOffset.y * -0.5
           }px, 0)`,
         }}
       >
         <Image
           src={activeMaterial.heroImage}
-          alt={`${activeMaterial.name} Macro Landscape`}
+          alt={`${activeMaterial.name} Natural Slab`}
           fill
           priority
           sizes="100vw"
-          className="object-cover opacity-85 filter brightness-95 contrast-105"
+          className="object-cover opacity-85 filter brightness-90 contrast-105"
         />
-        {/* Subtle cinematic gradient vignette & grain */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-black/60" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-black/60" />
+        {/* Subtle architectural vignette for legibility */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/35 to-black/60 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-black/50 pointer-events-none" />
       </div>
 
-      {/* Top Metadata Spacer / Header spacing */}
-      <div className="relative z-10 pt-32 px-6 md:px-12 max-w-7xl mx-auto w-full flex items-center justify-between">
-        <div className="flex items-center space-x-3 text-[11px] font-mono tracking-[0.35em] text-stone-300 uppercase">
-          <span className="w-2 h-2 rounded-full bg-[var(--accent)] animate-pulse" />
-          <span>ACTIVE MATERIAL WORLD // {activeMaterial.number} {activeMaterial.name}</span>
+      {/* Top Header Spacing */}
+      <div className="relative z-10 pt-28 md:pt-36 px-6 md:px-12 max-w-7xl mx-auto w-full flex items-center justify-between">
+        <div className="flex items-center space-x-2 text-[10px] font-mono tracking-[0.35em] text-stone-300 uppercase">
+          <span className="w-2 h-2 rounded-full bg-[var(--accent)]" />
+          <span>SHOWROOM COLLECTION · {activeMaterial.name}</span>
         </div>
-        <div className="hidden md:flex items-center space-x-2 text-[10px] font-mono tracking-[0.35em] text-stone-400 uppercase">
-          <span>LAT 26.86° N · LON 81.01° E</span>
+        <div className="hidden sm:flex items-center space-x-3 text-[10px] font-mono tracking-[0.35em] text-stone-400 uppercase">
+          <span>KAMTA · AYODHYA ROAD · LUCKNOW</span>
         </div>
       </div>
 
@@ -62,53 +62,67 @@ export function Hero() {
       <div
         className="relative z-10 px-6 md:px-12 max-w-7xl mx-auto w-full my-auto transition-transform duration-500 ease-out"
         style={{
-          transform: `translate3d(${mouseOffset.x * 0.4}px, ${
-            mouseOffset.y * 0.4
+          transform: `translate3d(${mouseOffset.x * 0.3}px, ${
+            mouseOffset.y * 0.3
           }px, 0)`,
         }}
       >
         <div className="max-w-4xl">
-          <span className="block text-xs md:text-sm font-mono tracking-[0.45em] uppercase text-stone-300 mb-4">
-            ARCHITECTURAL SURFACE STUDIO · LUCKNOW
+          <span className="block text-[11px] md:text-xs font-mono tracking-[0.45em] uppercase text-stone-300 mb-4">
+            MARBLE · GRANITE · NATURAL STONE SHOWROOM
           </span>
 
-          <h1 className="font-serif-luxury text-5xl sm:text-7xl md:text-8xl lg:text-9xl leading-[0.88] tracking-tight uppercase text-stone-100 font-light">
-            WHERE <br />
-            <span className="italic font-normal text-stone-200">EARTH</span> <br />
-            BECOMES <br />
-            <span className="tracking-widest text-[var(--accent)]">ARCHITECTURE.</span>
+          <h1 className="font-serif-luxury text-5xl sm:text-7xl md:text-8xl lg:text-9xl leading-[0.9] tracking-tight uppercase text-stone-100 font-light">
+            STONE, <br />
+            <span className="italic font-normal text-stone-200">FOR EVERY</span> <br />
+            SPACE.
           </h1>
 
-          <p className="mt-8 text-stone-300 text-sm md:text-base max-w-xl font-light leading-relaxed tracking-wide">
-            {activeMaterial.atmosphereQuote}
+          <p className="mt-6 md:mt-8 text-stone-300 text-base md:text-xl font-light leading-relaxed max-w-2xl">
+            Marble, granite and natural stone for homes, interiors and everyday spaces.
           </p>
+
+          {/* Action CTAs */}
+          <div className="mt-8 md:mt-10 flex flex-wrap items-center gap-4">
+            <a
+              href="#materials"
+              className="px-8 py-4 bg-white text-black text-xs font-mono tracking-[0.2em] uppercase font-semibold hover:bg-stone-200 transition-colors inline-flex items-center space-x-2"
+              onMouseEnter={() => setCursor("explore", "EXPLORE")}
+              onMouseLeave={resetCursor}
+            >
+              <span>EXPLORE MATERIALS</span>
+              <ArrowDown className="w-3.5 h-3.5" />
+            </a>
+
+            <a
+              href="#showroom"
+              className="px-8 py-4 border border-white/60 text-white text-xs font-mono tracking-[0.2em] uppercase hover:bg-white hover:text-black transition-colors inline-flex items-center space-x-2"
+              onMouseEnter={() => setCursor("visit", "VISIT")}
+              onMouseLeave={resetCursor}
+            >
+              <span>VISIT SHOWROOM</span>
+              <ArrowUpRight className="w-3.5 h-3.5" />
+            </a>
+          </div>
         </div>
       </div>
 
-      {/* Bottom Architectural Bar */}
-      <div className="relative z-10 pb-10 px-6 md:px-12 max-w-7xl mx-auto w-full flex flex-col md:flex-row items-start md:items-end justify-between gap-6">
-        <div className="flex items-center space-x-6 text-[11px] font-mono tracking-[0.3em] uppercase text-stone-300">
-          <div>
-            <span className="text-stone-500 block text-[9px]">SHOWROOM LOCATION</span>
-            <span>KAMTA · AYODHYA ROAD</span>
-          </div>
-          <div className="h-6 w-[1px] bg-stone-700" />
-          <div>
-            <span className="text-stone-500 block text-[9px]">NATURAL ORIGIN</span>
-            <span>CARRARA · RAJASTHAN · VERONA</span>
-          </div>
+      {/* Bottom Bar: Natural Variation Info & Subtle Scroll Indicator */}
+      <div className="relative z-10 pb-8 px-6 md:px-12 max-w-7xl mx-auto w-full flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 text-stone-400 text-[10px] font-mono tracking-[0.3em] uppercase">
+        <div className="flex items-center space-x-4">
+          <span>VEINS</span>
+          <span>·</span>
+          <span>TEXTURE</span>
+          <span>·</span>
+          <span>NATURAL DENSITY</span>
         </div>
 
         <a
-          href="#transformation"
-          className="group flex items-center space-x-3 text-xs tracking-[0.25em] uppercase font-medium text-stone-300 hover:text-white transition-colors"
-          onMouseEnter={() => setCursor("explore", "SCROLL")}
-          onMouseLeave={resetCursor}
+          href="#materials"
+          className="group flex items-center space-x-2 text-stone-300 hover:text-white transition-colors"
         >
-          <span>SCROLL TO EXPLORE</span>
-          <div className="w-8 h-8 rounded-full border border-stone-500 flex items-center justify-center group-hover:border-white transition-colors">
-            <ArrowDown className="w-3.5 h-3.5 transition-transform group-hover:translate-y-1" />
-          </div>
+          <span>SCROLL TO DISCOVER</span>
+          <ArrowDown className="w-3.5 h-3.5 group-hover:translate-y-0.5 transition-transform" />
         </a>
       </div>
     </section>

@@ -5,18 +5,12 @@ import { MaterialThemeProvider } from "@/context/MaterialThemeContext";
 import { CustomCursor } from "@/components/CustomCursor";
 import { Navigation } from "@/components/Navigation";
 import { Hero } from "@/components/Hero";
-import { BrandStatement } from "@/components/BrandStatement";
-import { HeroTransformation } from "@/components/HeroTransformation";
-import { SlabExperience } from "@/components/SlabExperience";
-import { MacroGallery } from "@/components/MacroGallery";
-import { HorizontalSlabGallery } from "@/components/HorizontalSlabGallery";
-import { ApplicationsStory } from "@/components/ApplicationsStory";
-import { ProjectGallery } from "@/components/ProjectGallery";
-import { ShowroomExperience } from "@/components/ShowroomExperience";
-import { BehindTheMaterial } from "@/components/BehindTheMaterial";
-import { ArchitectsSection } from "@/components/ArchitectsSection";
-import { MaterialConsultation } from "@/components/MaterialConsultation";
-import { Testimonials } from "@/components/Testimonials";
+import { MaterialExplorer } from "@/components/MaterialExplorer";
+import { ApplicationsSection } from "@/components/ApplicationsSection";
+import { ProductDiscovery } from "@/components/ProductDiscovery";
+import { TouchMaterial } from "@/components/TouchMaterial";
+import { TrustSection } from "@/components/TrustSection";
+import { ShowroomSection } from "@/components/ShowroomSection";
 import { Footer } from "@/components/Footer";
 import { StickyMobileBar } from "@/components/StickyMobileBar";
 
@@ -25,16 +19,16 @@ export default function HomePage() {
     "@context": "https://schema.org",
     "@type": ["LocalBusiness", "HomeGoodsStore"],
     name: "Stone Gallery",
-    alternateName: "Stone Gallery Lucknow - Architectural Stone & Surface Studio",
+    alternateName: "Stone Gallery Lucknow - Marble, Granite & Natural Stone Dealer",
     url: "https://stonegallery.in",
     logo: "https://stonegallery.in/icon.svg",
     image: [
       "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=85",
-      "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1600&q=85",
-      "https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1533090161767-e6ffed986c88?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1600573472550-8090b5e0745e?auto=format&fit=crop&w=1600&q=85",
     ],
     description:
-      "A premier architectural stone, Italian marble, exotic granite, travertine and onyx surface studio in Lucknow, Uttar Pradesh. Discover earth's raw beauty shaped for timeless living spaces.",
+      "A physical stone, marble, granite and architectural-surface showroom and dealer in Lucknow, Uttar Pradesh. Dealing in Rajasthan Black Granite, Green Granite, Blue Pearl Granite, Indian White Marble, and Natural Stone.",
     address: {
       "@type": "PostalAddress",
       streetAddress:
@@ -51,23 +45,24 @@ export default function HomePage() {
     },
     telephone: "+919999999999",
     openingHours: "Mo,Tu,We,Th,Fr,Sa,Su 10:00-20:00",
-    priceRange: "$$$$",
+    priceRange: "$$",
     areaServed: [
       { "@type": "City", name: "Lucknow" },
-      { "@type": "City", name: "Kanpur" },
-      { "@type": "City", name: "Ayodhya" },
+      { "@type": "City", name: "Chinhat" },
+      { "@type": "City", name: "Kamta" },
       { "@type": "AdministrativeArea", name: "Uttar Pradesh" },
     ],
     hasOfferCatalog: {
       "@type": "OfferCatalog",
-      name: "Architectural Stone & Surface Collections",
+      name: "Marble, Granite & Natural Stone Collections",
       itemListElement: [
-        { "@type": "Offer", itemOffered: { "@type": "Product", name: "Italian Marble Slabs (Statuario, Calacatta)" } },
-        { "@type": "Offer", itemOffered: { "@type": "Product", name: "Exotic Brazilian Granite (Cosmic Black, Titanium)" } },
-        { "@type": "Offer", itemOffered: { "@type": "Product", name: "Roman Navona Travertine" } },
-        { "@type": "Offer", itemOffered: { "@type": "Product", name: "Translucent Backlit Persian Onyx" } },
-        { "@type": "Offer", itemOffered: { "@type": "Product", name: "Engineered Architectural Quartz" } },
-        { "@type": "Offer", itemOffered: { "@type": "Product", name: "Natural Indian Stone & Sandstone" } },
+        { "@type": "Offer", itemOffered: { "@type": "Product", name: "Rajasthan Black Granite" } },
+        { "@type": "Offer", itemOffered: { "@type": "Product", name: "Green Granite" } },
+        { "@type": "Offer", itemOffered: { "@type": "Product", name: "Blue Pearl Granite" } },
+        { "@type": "Offer", itemOffered: { "@type": "Product", name: "Red Granite" } },
+        { "@type": "Offer", itemOffered: { "@type": "Product", name: "Cats Eye Granite" } },
+        { "@type": "Offer", itemOffered: { "@type": "Product", name: "Indian White Marble" } },
+        { "@type": "Offer", itemOffered: { "@type": "Product", name: "Kota Stone Flooring & Paving" } },
       ],
     },
   };
@@ -80,61 +75,43 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
       />
 
-      {/* Tactile Ambient Material Grain */}
-      <div className="fixed inset-0 pointer-events-none z-30 bg-grain opacity-40 mix-blend-overlay" />
+      {/* Subtle Ambient Grain Overlay */}
+      <div className="fixed inset-0 pointer-events-none z-30 bg-grain opacity-35 mix-blend-overlay" />
 
       {/* Desktop Custom Precision Cursor */}
       <CustomCursor />
 
-      {/* Minimal Floating Navigation */}
+      {/* Material-driven Floating Navigation */}
       <Navigation />
 
       {/* Main Experience Flow */}
       <main className="relative flex flex-col w-full">
-        {/* WOW 01: Full-Screen Cinematic Macro Stone Hero */}
+        {/* Section 4: Hero "STONE, FOR EVERY SPACE." */}
         <Hero />
 
-        {/* Section 11: Editorial Brand Manifesto */}
-        <BrandStatement />
+        {/* Section 6: Material Explorer "FIND YOUR STONE" (Huge Visual Objects) */}
+        <MaterialExplorer />
 
-        {/* WOW 02 & Section 10: Hero Transformation (Macro -> Surface -> Slab -> Space) */}
-        <HeroTransformation />
+        {/* Section 8: "WHERE STONE BELONGS" (Kitchens, Door Frames, Floors, Walls, Outdoor) */}
+        <ApplicationsSection />
 
-        {/* WOW 04 & Section 14: Meet The Slab - Interactive Slab Inspector */}
-        <SlabExperience />
+        {/* Section 9: Product Discovery (Rajasthan Black, Green, Blue Pearl, Red, Cats Eye, etc.) */}
+        <ProductDiscovery />
 
-        {/* WOW 06 & Section 15: Look Closer - Macro Material Zoom Loupe */}
-        <MacroGallery />
+        {/* Section 11: "Touch The Material" Moment (Microscopic Texture -> Full Slab) */}
+        <TouchMaterial />
 
-        {/* WOW 05 & Section 19: Walking The Gallery - Horizontal Slab Runway */}
-        <HorizontalSlabGallery />
+        {/* Section 15: Restrained Trust Section (Transparent Showroom Standard) */}
+        <TrustSection />
 
-        {/* WOW 07 & Section 20-21: From Slab to Space - Spatial Applications */}
-        <ApplicationsStory />
-
-        {/* Section 22-23: Stone in Context - Real Lucknow Commissions */}
-        <ProjectGallery />
-
-        {/* Section 24-25: See It In Person - Lucknow Showroom Experience */}
-        <ShowroomExperience />
-
-        {/* Section 26: Behind The Material - Studio Ethos */}
-        <BehindTheMaterial />
-
-        {/* Section 27: For Architects & Interior Designers */}
-        <ArchitectsSection />
-
-        {/* Section 28: Interactive Space Consultation */}
-        <MaterialConsultation />
-
-        {/* Section 30: Testimonials from Lucknow Homeowners & Architects */}
-        <Testimonials />
+        {/* Section 12: "SEE IT IN PERSON." (Showroom Ayodhya Road Lucknow + Maps + Call + WhatsApp) */}
+        <ShowroomSection />
       </main>
 
-      {/* Section 33-34: Material-Aware Monograph Footer */}
+      {/* Section 16: Minimal Premium Footer */}
       <Footer />
 
-      {/* Mobile Sticky Bar for Direct WhatsApp & Navigation */}
+      {/* Persistent Mobile Action Bar */}
       <StickyMobileBar />
     </MaterialThemeProvider>
   );
