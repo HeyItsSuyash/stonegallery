@@ -10,14 +10,10 @@ import { EditorialApplications } from "@/components/EditorialApplications";
 import { EditorialTestimonials } from "@/components/EditorialTestimonials";
 import { EditorialShowroom } from "@/components/EditorialShowroom";
 import { EditorialFooter } from "@/components/EditorialFooter";
-import { RefinedCursor } from "@/components/RefinedCursor";
 
 export default function HomePage() {
   return (
     <GalleryProvider>
-      {/* Desktop Refined Text Cursor Badge */}
-      <RefinedCursor />
-
       {/* Minimal Floating Navigation */}
       <EditorialNav />
 
@@ -26,19 +22,19 @@ export default function HomePage() {
         {/* Section 01: Full-Screen Cinematic Macro Hero */}
         <EditorialHero />
 
-        {/* Section 02 & 03: Editorial Statement + Three Massive Materials + Digital Catalogue */}
+        {/* Section 02: Side-by-Side Find Your Stone + Stone Styles with Arrow Navigation */}
         <EditorialMaterialSection />
 
-        {/* Section 04: Signature Scroll Progression (MATERIAL -> SURFACE -> SPACE) */}
+        {/* Section 03: Signature Scroll Progression (MATERIAL -> SURFACE -> SPACE) */}
         <SignatureScrollSection />
 
-        {/* Section 05: Stone in Use (Applications) */}
+        {/* Section 04: Stone in Use (Applications) */}
         <EditorialApplications />
 
-        {/* Section 06: Separate Verified Testimonials Section */}
+        {/* Section 05: Marquee-Based Testimonials */}
         <EditorialTestimonials />
 
-        {/* Section 07: See It In Person (Showroom Yard & Direct Enquiry) */}
+        {/* Section 06: Showroom Yard & Direct Inspection */}
         <EditorialShowroom />
       </main>
 

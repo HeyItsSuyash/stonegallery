@@ -2,12 +2,10 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
-import { useGallery } from "@/context/GalleryContext";
+import { Logo } from "@/components/Logo";
 import { SHOWROOM_INFO } from "@/data/editorial";
 
 export function EditorialNav() {
-  const { setCursorLabel } = useGallery();
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -27,27 +25,12 @@ export function EditorialNav() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
-        {/* Left: Brand Monogram + Typography (NO BOX AROUND LOGO) */}
+        {/* Left: Brand Monogram + Typography (New Logo, No Box) */}
         <Link
           href="/"
           className="flex items-center space-x-3.5 group select-none"
-          onMouseEnter={() => setCursorLabel("HOME")}
-          onMouseLeave={() => setCursorLabel(null)}
         >
-          {/* Transparent frameless logo - NO black box */}
-          <div className="relative w-9 h-9 flex-shrink-0">
-            <Image
-              src="/logo.png"
-              alt="Stone Gallery"
-              fill
-              sizes="36px"
-              className="object-contain"
-              priority
-            />
-          </div>
-          <span className="font-serif-luxury text-xl md:text-2xl tracking-[0.14em] uppercase font-light">
-            STONE GALLERY
-          </span>
+          <Logo size="md" variant="horizontal" />
         </Link>
 
         {/* Center/Right Minimal Navigation with Animated Bottom Border Highlights */}
@@ -55,8 +38,6 @@ export function EditorialNav() {
           <a
             href="#materials"
             className="relative py-1 group/nav transition-colors"
-            onMouseEnter={() => setCursorLabel("VIEW")}
-            onMouseLeave={() => setCursorLabel(null)}
           >
             <span>MATERIALS</span>
             <span className="absolute bottom-0 left-0 w-full h-[1.5px] bg-current transform scale-x-0 group-hover/nav:scale-x-100 transition-transform duration-300 origin-left ease-out" />
@@ -65,8 +46,6 @@ export function EditorialNav() {
           <a
             href="#applications"
             className="relative py-1 group/nav transition-colors hidden sm:inline-block"
-            onMouseEnter={() => setCursorLabel("VIEW")}
-            onMouseLeave={() => setCursorLabel(null)}
           >
             <span>APPLICATIONS</span>
             <span className="absolute bottom-0 left-0 w-full h-[1.5px] bg-current transform scale-x-0 group-hover/nav:scale-x-100 transition-transform duration-300 origin-left ease-out" />
@@ -75,8 +54,6 @@ export function EditorialNav() {
           <a
             href="#reviews"
             className="relative py-1 group/nav transition-colors hidden md:inline-block"
-            onMouseEnter={() => setCursorLabel("REVIEWS")}
-            onMouseLeave={() => setCursorLabel(null)}
           >
             <span>REVIEWS</span>
             <span className="absolute bottom-0 left-0 w-full h-[1.5px] bg-current transform scale-x-0 group-hover/nav:scale-x-100 transition-transform duration-300 origin-left ease-out" />
@@ -85,8 +62,6 @@ export function EditorialNav() {
           <a
             href="#showroom"
             className="relative py-1 group/nav transition-colors"
-            onMouseEnter={() => setCursorLabel("VISIT")}
-            onMouseLeave={() => setCursorLabel(null)}
           >
             <span>SHOWROOM</span>
             <span className="absolute bottom-0 left-0 w-full h-[1.5px] bg-current transform scale-x-0 group-hover/nav:scale-x-100 transition-transform duration-300 origin-left ease-out" />
@@ -100,8 +75,6 @@ export function EditorialNav() {
             target="_blank"
             rel="noopener noreferrer"
             className="px-4 py-1.5 border border-current/35 hover:border-current hover:bg-white/10 text-[10px] font-mono tracking-[0.2em] uppercase rounded-xs transition-all duration-300 font-medium"
-            onMouseEnter={() => setCursorLabel("ENQUIRE")}
-            onMouseLeave={() => setCursorLabel(null)}
           >
             ENQUIRE
           </a>

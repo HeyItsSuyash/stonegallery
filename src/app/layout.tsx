@@ -32,12 +32,12 @@ export const metadata: Metadata = {
     "Marble, Granite, and Natural Stone. A physical showroom and slab yard in Lucknow, Uttar Pradesh.",
   icons: {
     icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
       { url: "/favicon.png", type: "image/png" },
-      { url: "/logo.png", type: "image/png" },
+      { url: "/icon.svg", type: "image/svg+xml" },
     ],
     apple: [
       { url: "/apple-touch-icon.png", type: "image/png" },
-      { url: "/logo.png", type: "image/png" },
     ],
   },
   openGraph: {
@@ -59,6 +59,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${instrumentSerif.variable} ${geist.variable} scroll-smooth`}>
       <head>
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <link rel="icon" href="/favicon.png" />
       </head>
       <body className="antialiased min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] transition-colors duration-1000 ease-out font-sans">

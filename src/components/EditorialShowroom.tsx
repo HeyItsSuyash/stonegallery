@@ -3,31 +3,25 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { SHOWROOM_INFO } from "@/data/editorial";
-import { useGallery } from "@/context/GalleryContext";
 
 export function EditorialShowroom() {
-  const { materialData, setCursorLabel } = useGallery();
   const [showMap, setShowMap] = useState(false);
 
   return (
-    <section id="showroom" className="py-28 md:py-48 px-6 md:px-12 max-w-7xl mx-auto w-full">
+    <section id="showroom" className="py-24 md:py-36 px-6 md:px-12 max-w-7xl mx-auto w-full border-t border-[var(--border-subtle)]">
       {/* Title */}
-      <div className="mb-16 md:mb-24">
+      <div className="mb-14 md:mb-20">
         <span className="text-[10px] font-mono tracking-[0.3em] uppercase text-[var(--text-muted)] block mb-3">
           SHOWROOM YARD · LUCKNOW
         </span>
-        <h2 className="font-serif-luxury text-[13vw] sm:text-[10vw] md:text-[8vw] leading-[0.9] uppercase font-light text-[var(--text-primary)]">
+        <h2 className="font-serif-luxury text-5xl sm:text-6xl md:text-7xl leading-[0.95] uppercase font-light text-[var(--text-primary)]">
           SEE IT <br />
           IN PERSON.
         </h2>
       </div>
 
       {/* Large Showroom Photograph / Map Viewport */}
-      <div
-        className="relative aspect-[16/9] w-full overflow-hidden bg-black/10 select-none group"
-        onMouseEnter={() => setCursorLabel(showMap ? "MAP" : "SHOWROOM")}
-        onMouseLeave={() => setCursorLabel(null)}
-      >
+      <div className="relative aspect-[16/9] w-full overflow-hidden bg-black/10 select-none group rounded-xs border border-[var(--border-subtle)]">
         {!showMap ? (
           <Image
             src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2400&q=90"
@@ -65,7 +59,6 @@ export function EditorialShowroom() {
             &ldquo;Stone changes under real light. Come see the slab before you choose it.&rdquo;
           </p>
 
-          {/* Understated Primary CTA */}
           <div className="mt-8">
             <a
               href={SHOWROOM_INFO.mapsUrl}
@@ -78,64 +71,36 @@ export function EditorialShowroom() {
           </div>
         </div>
 
-        {/* Small Address & Understated Action Links */}
-        <div className="md:col-span-5 text-xs text-[var(--text-secondary)] font-light space-y-4">
-          <div className="space-y-1">
-            {SHOWROOM_INFO.address.map((line, idx) => (
-              <p key={idx}>{line}</p>
-            ))}
+        <div className="md:col-span-5 space-y-4 text-xs font-mono text-[var(--text-muted)]">
+          <div>
+            <span className="block text-[10px] tracking-widest uppercase text-[var(--text-primary)] mb-1">
+              ADDRESS
+            </span>
+            <p className="leading-relaxed">{SHOWROOM_INFO.address.join(", ")}</p>
           </div>
 
-          <div className="pt-4 border-t border-[var(--border-color)] flex flex-wrap items-center gap-6 text-[11px] font-mono tracking-[0.2em] uppercase text-[var(--text-primary)]">
-            <a
-              href={SHOWROOM_INFO.mapsUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:opacity-60 transition-opacity"
-            >
-              GET DIRECTIONS
-            </a>
-            <a
-              href={`tel:${SHOWROOM_INFO.phone1}`}
-              className="hover:opacity-60 transition-opacity"
-            >
-              CALL
-            </a>
-            <a
-              href={`https://wa.me/${SHOWROOM_INFO.whatsapp}?text=${encodeURIComponent(
-                "Hi, I would like to visit the Stone Gallery showroom on Ayodhya Road today."
-              )}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:opacity-60 transition-opacity"
-            >
-              WHATSAPP
-            </a>
+          <div className="pt-2">
+            <span className="block text-[10px] tracking-widest uppercase text-[var(--text-primary)] mb-1">
+              VISITING HOURS
+            </span>
+            <p>Monday – Sunday: 9:30 AM – 8:00 PM</p>
+          </div>
+
+          <div className="pt-2">
+            <span className="block text-[10px] tracking-widest uppercase text-[var(--text-primary)] mb-1">
+              TELEPHONE
+            </span>
+            <p>
+              <a href={`tel:${SHOWROOM_INFO.phone1}`} className="hover:text-[var(--text-primary)] transition-colors">
+                {SHOWROOM_INFO.phone1}
+              </a>
+              {" / "}
+              <a href={`tel:${SHOWROOM_INFO.phone2}`} className="hover:text-[var(--text-primary)] transition-colors">
+                {SHOWROOM_INFO.phone2}
+              </a>
+            </p>
           </div>
         </div>
-      </div>
-
-      {/* Section 14: Contact / Material Enquiry */}
-      <div id="contact" className="mt-28 md:mt-40 pt-16 border-t border-[var(--border-color)] flex flex-col sm:flex-row sm:items-baseline justify-between gap-6">
-        <div>
-          <span className="text-[10px] font-mono tracking-[0.3em] uppercase text-[var(--text-muted)] block mb-1">
-            DIRECT INQUIRY
-          </span>
-          <p className="font-serif-luxury text-2xl md:text-3xl uppercase font-light text-[var(--text-primary)]">
-            Active Selection: {materialData.name}
-          </p>
-        </div>
-
-        <a
-          href={`https://wa.me/${SHOWROOM_INFO.whatsapp}?text=${encodeURIComponent(
-            `Hi, I found ${materialData.name} on the Stone Gallery website and would like to enquire about it.`
-          )}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center space-x-2 text-xs font-mono tracking-[0.25em] uppercase text-[var(--text-primary)] hover:opacity-60 transition-opacity border-b border-current pb-1 whitespace-nowrap"
-        >
-          <span>ENQUIRE ABOUT THIS MATERIAL →</span>
-        </a>
       </div>
     </section>
   );

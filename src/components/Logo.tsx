@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 
 interface LogoProps {
   className?: string;
@@ -14,45 +13,66 @@ export function Logo({
   variant = "horizontal",
   size = "md",
 }: LogoProps) {
-  const imageDimensions =
-    size === "sm" ? 34 : size === "lg" ? 56 : 42;
+  const pixelSize = size === "sm" ? 30 : size === "lg" ? 48 : 38;
 
-  const LogoImage = (
-    <div
-      className={`relative rounded-md overflow-hidden flex-shrink-0 bg-black border border-white/15 transition-transform duration-300 group-hover:scale-105`}
-      style={{
-        width: `${imageDimensions}px`,
-        height: `${imageDimensions}px`,
-      }}
+  // Ultra-Luxury Architectural Monolith Emblem (Vector - No Box, No Border)
+  const Emblem = (
+    <svg
+      width={pixelSize}
+      height={pixelSize}
+      viewBox="0 0 48 48"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className="flex-shrink-0 transition-transform duration-500 group-hover:scale-105"
+      aria-label="Stone Gallery Architectural Monolith Mark"
     >
-      <Image
-        src="/logo.png"
-        alt="Stone Gallery Monogram Logo"
-        fill
-        sizes={`${imageDimensions}px`}
-        className="object-contain p-0.5"
-        priority
+      {/* Precision Stone Facet 01 - Deep Crystalline Left Plane */}
+      <polygon
+        points="10,15 24,7 24,35 10,43"
+        fill="currentColor"
+        className="opacity-90"
       />
-    </div>
+      {/* Precision Stone Facet 02 - Luminous Reflective Right Plane */}
+      <polygon
+        points="24,7 38,15 38,43 24,35"
+        fill="currentColor"
+        className="opacity-60"
+      />
+      {/* Precision Stone Facet 03 - Planar Top Cut */}
+      <polygon
+        points="24,7 38,15 24,23 10,15"
+        fill="currentColor"
+        className="opacity-95"
+      />
+      {/* Geological Vein Incision - Luxury Warm Gold */}
+      <line
+        x1="18"
+        y1="11"
+        x2="30"
+        y2="39"
+        stroke="#C5A880"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+      />
+      {/* Core Mineral Spark */}
+      <circle cx="24" cy="25" r="1.5" fill="#C5A880" />
+    </svg>
   );
 
   if (variant === "mark-only") {
-    return <div className={`inline-flex items-center ${className}`}>{LogoImage}</div>;
+    return <div className={`inline-flex items-center ${className}`}>{Emblem}</div>;
   }
 
   if (variant === "stacked") {
     return (
       <div className={`group inline-flex flex-col items-center text-center select-none ${className}`}>
-        <div className="mb-2.5">{LogoImage}</div>
-        <div className="flex flex-col items-center leading-tight">
-          <span className="font-serif-luxury text-2xl tracking-[0.25em] uppercase font-light">
+        <div className="mb-2">{Emblem}</div>
+        <div className="flex flex-col items-center leading-none">
+          <span className="font-serif-luxury text-2xl tracking-[0.2em] uppercase font-light">
             STONE GALLERY
           </span>
-          <span className="font-sans-utility text-[9px] tracking-[0.45em] uppercase font-semibold text-[var(--accent)] mt-1">
+          <span className="text-[9px] font-mono tracking-[0.4em] uppercase opacity-70 mt-1">
             LUCKNOW
-          </span>
-          <span className="text-[8px] font-mono tracking-[0.25em] uppercase opacity-60 mt-0.5">
-            MARBLE · GRANITE · NATURAL STONE
           </span>
         </div>
       </div>
@@ -64,20 +84,14 @@ export function Logo({
     <div
       className={`group inline-flex items-center space-x-3 select-none leading-none ${className}`}
     >
-      {LogoImage}
+      {Emblem}
       <div className="flex flex-col justify-center">
-        <span className="font-serif-luxury text-xl md:text-2xl font-light tracking-[0.22em] uppercase">
+        <span className="font-serif-luxury text-xl md:text-2xl font-light tracking-[0.15em] uppercase">
           STONE GALLERY
         </span>
-        <div className="flex items-center space-x-2 mt-1">
-          <span className="font-sans-utility text-[8px] tracking-[0.4em] uppercase font-semibold text-[var(--accent)]">
-            LUCKNOW
-          </span>
-          <span className="w-1 h-1 rounded-full bg-current opacity-30" />
-          <span className="font-mono text-[7px] tracking-[0.25em] uppercase opacity-60">
-            MARBLE · GRANITE · STONE
-          </span>
-        </div>
+        <span className="text-[9px] font-mono tracking-[0.28em] uppercase text-[var(--text-muted)] mt-1 opacity-80">
+          LUCKNOW
+        </span>
       </div>
     </div>
   );

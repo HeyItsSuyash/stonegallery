@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useGallery } from "@/context/GalleryContext";
 
 export function EditorialHero() {
-  const { materialData, setCursorLabel } = useGallery();
+  const { materialData } = useGallery();
 
   return (
     <section className="relative h-screen w-full flex flex-col justify-between overflow-hidden bg-black text-white select-none">
@@ -27,13 +27,9 @@ export function EditorialHero() {
       <div className="relative z-10 pt-28" />
 
       {/* Central / Bottom Editorial Typography */}
-      <div
-        className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full pb-16 flex flex-col justify-end"
-        onMouseEnter={() => setCursorLabel("EXPLORE")}
-        onMouseLeave={() => setCursorLabel(null)}
-      >
+      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full pb-16 flex flex-col justify-end">
         <div className="max-w-4xl">
-          <h1 className="font-serif-luxury text-[16vw] sm:text-[13vw] md:text-[10vw] leading-[0.88] uppercase tracking-tight text-white">
+          <h1 className="font-serif-luxury text-[16vw] sm:text-[13vw] md:text-[10vw] leading-[0.88] uppercase tracking-tight text-white font-light">
             STONE <br />
             GALLERY
           </h1>
@@ -44,7 +40,7 @@ export function EditorialHero() {
             </p>
 
             <a
-              href="#statement"
+              href="#materials"
               className="inline-flex items-center space-x-2 text-[10px] font-mono tracking-[0.3em] uppercase text-stone-400 hover:text-white transition-colors"
             >
               <span>EXPLORE</span>

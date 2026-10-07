@@ -2,10 +2,8 @@
 
 import React from "react";
 import { TESTIMONIALS, SHOWROOM_INFO } from "@/data/editorial";
-import { useGallery } from "@/context/GalleryContext";
 
 export function EditorialTestimonials() {
-  const { setCursorLabel } = useGallery();
 
   // Duplicate items to make the horizontal marquee loop seamlessly
   const marqueeItems = [...TESTIMONIALS, ...TESTIMONIALS];
@@ -38,11 +36,7 @@ export function EditorialTestimonials() {
       </div>
 
       {/* Marquee Carousel with Gradient Overlay Edges */}
-      <div
-        className="relative w-full overflow-hidden select-none"
-        onMouseEnter={() => setCursorLabel("PAUSE")}
-        onMouseLeave={() => setCursorLabel(null)}
-      >
+      <div className="relative w-full overflow-hidden select-none">
         {/* Left Gradient Fade Overlay */}
         <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-24 sm:w-44 z-20 bg-gradient-to-r from-[var(--bg-primary)] via-[var(--bg-primary)]/80 to-transparent" />
 
